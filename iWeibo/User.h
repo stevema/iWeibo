@@ -24,7 +24,9 @@
 @property(nonatomic)int statuses_count;
 @property(nonatomic)int favourites_count;
 @property(nonatomic,strong)NSString *avatar_large;
-@property(nonatomic,strong)Feed *feed;
+@property(nonatomic,strong)NSMutableArray *feeds;
+
+-(id)initWithData:(NSDictionary *)data;
 
 -(void) getUserInfo:(NSMutableDictionary *) filters
           onComplete:(RequestCompleteBlock) completionHandler

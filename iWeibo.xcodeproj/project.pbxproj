@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA03997E1644202800CCAAD2 /* UITopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA03997D1644202800CCAAD2 /* UITopBarView.m */; };
+		AA03998616442B8E00CCAAD2 /* UIFeedListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA03998516442B8E00CCAAD2 /* UIFeedListCell.m */; };
 		AA40DEF01625BA0600C1F3AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEEF1625BA0600C1F3AA /* UIKit.framework */; };
 		AA40DEF21625BA0600C1F3AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEF11625BA0600C1F3AA /* Foundation.framework */; };
 		AA40DEF41625BA0600C1F3AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEF31625BA0600C1F3AA /* CoreGraphics.framework */; };
@@ -60,6 +62,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA03997C1644202800CCAAD2 /* UITopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITopBarView.h; sourceTree = "<group>"; };
+		AA03997D1644202800CCAAD2 /* UITopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITopBarView.m; sourceTree = "<group>"; };
+		AA03998416442B8E00CCAAD2 /* UIFeedListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFeedListCell.h; sourceTree = "<group>"; };
+		AA03998516442B8E00CCAAD2 /* UIFeedListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFeedListCell.m; sourceTree = "<group>"; };
 		AA40DEEB1625BA0600C1F3AA /* iWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA40DEEF1625BA0600C1F3AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA40DEF11625BA0600C1F3AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -247,6 +253,10 @@
 		AA40DF1F1625BFCD00C1F3AA /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				AA03997C1644202800CCAAD2 /* UITopBarView.h */,
+				AA03997D1644202800CCAAD2 /* UITopBarView.m */,
+				AA03998416442B8E00CCAAD2 /* UIFeedListCell.h */,
+				AA03998516442B8E00CCAAD2 /* UIFeedListCell.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -501,6 +511,8 @@
 				AA7037641643AA200093F57C /* SinaWeiboAuthorizeView.m in Sources */,
 				AA7037651643AA200093F57C /* SinaWeiboRequest.m in Sources */,
 				AA4F5F971643CFF200418729 /* Feed.m in Sources */,
+				AA03997E1644202800CCAAD2 /* UITopBarView.m in Sources */,
+				AA03998616442B8E00CCAAD2 /* UIFeedListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

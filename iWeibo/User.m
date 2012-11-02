@@ -23,11 +23,12 @@
 @synthesize favourites_count = _favourites_count;
 @synthesize avatar_large = _avatar_large;
 
-@synthesize feed = _feed;
+@synthesize feeds = _feeds;
 
 -(id)init
 {
     self = [super init];
+    _feeds = [[NSMutableArray alloc] init];
     return self;
 }
 
@@ -36,15 +37,25 @@
             onError:(RequestErrorBlock) errorHandler;
 {
     [[self api] getUserInfo:filters onComplete:^(NSDictionary *data){
-        [self initWithData:data];
-        NSLog(@"data is :%@",_screen_name);
+        _user_id = [data valueForKey:@"id"];
+        _screen_name = [data valueForKey:@"screen_name"];
+        _name = [data valueForKey:@"name"];
+        _description = [data valueForKey:@"description"];
+        _profile_image_url = [data valueForKey:@"profile_image_url"];
+        _gender = [data valueForKey:@"gender"];
+        _followers_count = [[data valueForKey:@"followers_count"] integerValue];
+        _statuses_count = [[data valueForKey:@"statuses_count"] integerValue];
+        _friends_count = [[data valueForKey:@"friends_count"] integerValue];
+        _favourites_count = [[data valueForKey:@"favourites_count"] integerValue];
+        _avatar_large = [data valueForKey:@"avatar_large"];
+
          completionHandler(data);
     } onError:^(NSString *msg){
          errorHandler(msg);
     } ssl:YES];
 }
 
--(void)initWithData:(NSDictionary *)data
+-(id)initWithData:(NSDictionary *)data
 {
     _user_id = [data valueForKey:@"id"];
     _screen_name = [data valueForKey:@"screen_name"];
@@ -57,6 +68,7 @@
     _friends_count = [[data valueForKey:@"friends_count"] integerValue];
     _favourites_count = [[data valueForKey:@"favourites_count"] integerValue];
     _avatar_large = [data valueForKey:@"avatar_large"];
+    return self;
 }
 
 -(void) listOpenWeibo:(NSMutableDictionary *) filters
@@ -64,6 +76,11 @@
               onError:(RequestErrorBlock) errorHandler;
 {
     [[self api] listOpenWeibo:filters onComplete:^(NSDictionary *data){
+        NSMutableArray *items = [[NSMutableArray alloc] initWithArray:[data valueForKey:@"statuses"]];
+        for (int i=0; i<[items count]; i++) {
+            Feed *feed = [[Feed alloc] initWithData:[items objectAtIndex:i]];
+            [_feeds addObject:feed];
+        }
         completionHandler(data);
     } onError:^(NSString *msg){
         errorHandler(msg);

@@ -90,12 +90,13 @@
                              onError:(RequestErrorBlock) errorHandler
                             ssl:(BOOL)ssl;
 {
-    NSString *url = [[NSString alloc] initWithFormat:@"statuses/friends_timeline"];
+    NSString *url = [[NSString alloc] initWithFormat:@"statuses/friends_timeline.json"];
     
     MKNetworkOperation *op = [self operationWithPath:url
                                               params:filters
                                           httpMethod:@"GET"
                                                  ssl:ssl];
+    NSLog(@"op url is :%@",op.url);
     [op onCompletion:^(MKNetworkOperation *completedOperation) {
         
         NSDictionary *data = [self parseResponseWithOperation:completedOperation];

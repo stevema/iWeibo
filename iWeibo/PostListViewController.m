@@ -7,14 +7,18 @@
 //
 
 #import "PostListViewController.h"
+#import "User.h"
+
 
 @interface PostListViewController ()
 {
     AppDelegate *delegate;
+    User *user;
 }
 @end
 
 @implementation PostListViewController
+static int max_count = 5;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,12 +35,21 @@
     [super viewDidLoad];
     delegate = [AppDelegate sharedAppDelegate];
     self.title = delegate.user.screen_name;
+    user = delegate.user;
     [self getNews];
 }
 
 -(void)getNews
 {
+    NSMutableDictionary *filters = [[NSMutableDictionary alloc] init];
+    [filters setValue:user.access_token forKey:@"access_token"];
+    [filters setObject:[NSNumber numberWithInt:max_count] forKey:@"count"];
     
+    [user listOpenWeibo:filters onComplete:^(NSDictionary *data){
+        [self.tableView reloadData];
+    } onError:^(NSString *msg){
+    
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,7 +64,7 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
