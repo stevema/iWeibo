@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		AA03997E1644202800CCAAD2 /* UITopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA03997D1644202800CCAAD2 /* UITopBarView.m */; };
 		AA03998616442B8E00CCAAD2 /* UIFeedListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA03998516442B8E00CCAAD2 /* UIFeedListCell.m */; };
+		AA03998D164432C000CCAAD2 /* topBar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA039987164432C000CCAAD2 /* topBar_bg.png */; };
+		AA03998E164432C000CCAAD2 /* topBar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA039988164432C000CCAAD2 /* topBar_bg@2x.png */; };
+		AA03998F164432C000CCAAD2 /* add_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = AA039989164432C000CCAAD2 /* add_photo.png */; };
+		AA039990164432C000CCAAD2 /* add_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA03998A164432C000CCAAD2 /* add_photo@2x.png */; };
+		AA039991164432C000CCAAD2 /* add_feed.png in Resources */ = {isa = PBXBuildFile; fileRef = AA03998B164432C000CCAAD2 /* add_feed.png */; };
+		AA039992164432C000CCAAD2 /* add_feed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA03998C164432C000CCAAD2 /* add_feed@2x.png */; };
 		AA40DEF01625BA0600C1F3AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEEF1625BA0600C1F3AA /* UIKit.framework */; };
 		AA40DEF21625BA0600C1F3AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEF11625BA0600C1F3AA /* Foundation.framework */; };
 		AA40DEF41625BA0600C1F3AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEF31625BA0600C1F3AA /* CoreGraphics.framework */; };
@@ -66,6 +72,12 @@
 		AA03997D1644202800CCAAD2 /* UITopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITopBarView.m; sourceTree = "<group>"; };
 		AA03998416442B8E00CCAAD2 /* UIFeedListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFeedListCell.h; sourceTree = "<group>"; };
 		AA03998516442B8E00CCAAD2 /* UIFeedListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFeedListCell.m; sourceTree = "<group>"; };
+		AA039987164432C000CCAAD2 /* topBar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar_bg.png; sourceTree = "<group>"; };
+		AA039988164432C000CCAAD2 /* topBar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topBar_bg@2x.png"; sourceTree = "<group>"; };
+		AA039989164432C000CCAAD2 /* add_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_photo.png; sourceTree = "<group>"; };
+		AA03998A164432C000CCAAD2 /* add_photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_photo@2x.png"; sourceTree = "<group>"; };
+		AA03998B164432C000CCAAD2 /* add_feed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_feed.png; sourceTree = "<group>"; };
+		AA03998C164432C000CCAAD2 /* add_feed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_feed@2x.png"; sourceTree = "<group>"; };
 		AA40DEEB1625BA0600C1F3AA /* iWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA40DEEF1625BA0600C1F3AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA40DEF11625BA0600C1F3AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -264,6 +276,12 @@
 		AA40DF2F1625C9C800C1F3AA /* images */ = {
 			isa = PBXGroup;
 			children = (
+				AA039987164432C000CCAAD2 /* topBar_bg.png */,
+				AA039988164432C000CCAAD2 /* topBar_bg@2x.png */,
+				AA039989164432C000CCAAD2 /* add_photo.png */,
+				AA03998A164432C000CCAAD2 /* add_photo@2x.png */,
+				AA03998B164432C000CCAAD2 /* add_feed.png */,
+				AA03998C164432C000CCAAD2 /* add_feed@2x.png */,
 				AA40DF201625C87D00C1F3AA /* Default-568h@2x.png */,
 				AA40DF2C1625C98300C1F3AA /* Default.png */,
 				AA40DF2A1625C97600C1F3AA /* Default@2x.png */,
@@ -465,6 +483,12 @@
 				AA40DF2B1625C97600C1F3AA /* Default@2x.png in Resources */,
 				AA40DF2D1625C98300C1F3AA /* Default.png in Resources */,
 				AA7037621643AA200093F57C /* SinaWeibo.bundle in Resources */,
+				AA03998D164432C000CCAAD2 /* topBar_bg.png in Resources */,
+				AA03998E164432C000CCAAD2 /* topBar_bg@2x.png in Resources */,
+				AA03998F164432C000CCAAD2 /* add_photo.png in Resources */,
+				AA039990164432C000CCAAD2 /* add_photo@2x.png in Resources */,
+				AA039991164432C000CCAAD2 /* add_feed.png in Resources */,
+				AA039992164432C000CCAAD2 /* add_feed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

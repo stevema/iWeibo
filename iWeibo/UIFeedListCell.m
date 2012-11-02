@@ -10,6 +10,11 @@
 
 @implementation UIFeedListCell
 
+-(void)setupCell:(Feed *)feed
+{
+    
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

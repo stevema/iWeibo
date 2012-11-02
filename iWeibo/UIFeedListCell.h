@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Feed.h"
 @interface UIFeedListCell : UITableViewCell
+
+
+-(void)setupCell:(Feed *)feed;
 
 @end
