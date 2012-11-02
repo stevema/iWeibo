@@ -28,6 +28,8 @@
 
 @synthesize weibo = _weibo;
 
+@synthesize splashView = _splashView;
+
 +(AppDelegate*)sharedAppDelegate
 {
     return (AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -37,6 +39,11 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    _splashView = [[UIImageView alloc] initWithFrame:self.window.frame];
+    _splashView.image = [UIImage imageNamed:@"Default"];
+    [self.window addSubview:_splashView];
+    [self.window makeKeyAndVisible];
+
     NSMutableDictionary *headerFields = [NSMutableDictionary dictionary];
     [headerFields setValue:@"iOS"
                     forKey:@"x-client-identifier"];
@@ -58,7 +65,7 @@
        [self setUpMainUI]; 
     }
     
-    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -98,6 +105,7 @@
     [filters setValue:[NSString stringWithFormat:@"%@",_user.user_id] forKey:@"uid"];
     [_user getUserInfo:filters onComplete:^(NSDictionary *data){
         NSLog(@"user name is:%@",_user.screen_name);
+        [_splashView removeFromSuperview];
         _postListViewController = [[PostListViewController alloc] initWithStyle:UITableViewStylePlain];
         _notificationViewController = [[NotificationViewController alloc] initWithStyle:UITableViewStylePlain];
         _friendsViewController = [[FriendsViewController alloc] initWithNibName:nil bundle:nil];
@@ -112,11 +120,13 @@
         _tabBarController = [[UITabBarController alloc] init];
         [_tabBarController setViewControllers:controllers];
         self.window.rootViewController = _tabBarController;
+        
     } onError:^(NSString *msg){
         
     }];
     
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

@@ -37,6 +37,7 @@
 
 @property(strong, nonatomic) SinaWeibo *weibo;
 
+@property(strong, nonatomic) UIImageView *splashView;
 
 +(AppDelegate*)sharedAppDelegate;
 @end
