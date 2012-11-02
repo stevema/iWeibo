@@ -1,0 +1,35 @@
+//
+//  SinaAPI.h
+//  iWeibo
+//
+//  Created by Steve on 11/2/12.
+//  Copyright (c) 2012 Steve. All rights reserved.
+//
+
+#import "MKNetworkEngine.h"
+
+typedef void (^RequestCompleteBlock)(NSDictionary *data);
+typedef void (^RequestErrorBlock)(NSString *msg);
+
+@class SBJsonParser;
+@class SBJsonWriter;
+
+@interface SinaAPI : MKNetworkEngine
+{
+    @private
+    SBJsonParser *_parser;
+    SBJsonWriter *_writer;
+}
+
+@property (nonatomic, strong)NSMutableDictionary *successObject;
+
+-(MKNetworkOperation *)listOpenWeibo:(NSMutableDictionary *)filters
+                          onComplete:(RequestCompleteBlock) completionHandler
+                             onError:(RequestErrorBlock) errorHandler;
+
+-(MKNetworkOperation*) downloadFileFrom:(NSString *)url
+                                 saveTo:(NSString *)path
+                             onComplete:(RequestCompleteBlock) completionHandler
+                                onError:(RequestErrorBlock) errorHandler;
+
+@end
