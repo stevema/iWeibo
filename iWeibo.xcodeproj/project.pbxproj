@@ -15,6 +15,7 @@
 		AA039990164432C000CCAAD2 /* add_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA03998A164432C000CCAAD2 /* add_photo@2x.png */; };
 		AA039991164432C000CCAAD2 /* add_feed.png in Resources */ = {isa = PBXBuildFile; fileRef = AA03998B164432C000CCAAD2 /* add_feed.png */; };
 		AA039992164432C000CCAAD2 /* add_feed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA03998C164432C000CCAAD2 /* add_feed@2x.png */; };
+		AA03999A1644362D00CCAAD2 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA039999164435D600CCAAD2 /* PullRefreshTableViewController.m */; };
 		AA40DEF01625BA0600C1F3AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEEF1625BA0600C1F3AA /* UIKit.framework */; };
 		AA40DEF21625BA0600C1F3AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEF11625BA0600C1F3AA /* Foundation.framework */; };
 		AA40DEF41625BA0600C1F3AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEF31625BA0600C1F3AA /* CoreGraphics.framework */; };
@@ -78,6 +79,8 @@
 		AA03998A164432C000CCAAD2 /* add_photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_photo@2x.png"; sourceTree = "<group>"; };
 		AA03998B164432C000CCAAD2 /* add_feed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_feed.png; sourceTree = "<group>"; };
 		AA03998C164432C000CCAAD2 /* add_feed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_feed@2x.png"; sourceTree = "<group>"; };
+		AA039998164435D600CCAAD2 /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
+		AA039999164435D600CCAAD2 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
 		AA40DEEB1625BA0600C1F3AA /* iWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA40DEEF1625BA0600C1F3AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA40DEF11625BA0600C1F3AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -189,6 +192,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA039997164435BB00CCAAD2 /* PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				AA039998164435D600CCAAD2 /* PullRefreshTableViewController.h */,
+				AA039999164435D600CCAAD2 /* PullRefreshTableViewController.m */,
+			);
+			name = PullToRefresh;
+			sourceTree = "<group>";
+		};
 		AA40DEE01625BA0600C1F3AA = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +321,7 @@
 		AA7036F7164393C30093F57C /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				AA039997164435BB00CCAAD2 /* PullToRefresh */,
 				AA7037551643AA200093F57C /* JSONKit */,
 				AA7037581643AA200093F57C /* SinaWeibo */,
 				AA70371B164395100093F57C /* SBJson */,
@@ -499,6 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA03999A1644362D00CCAAD2 /* PullRefreshTableViewController.m in Sources */,
 				AA703738164398C60093F57C /* SBJsonParser.m in Sources */,
 				AA703739164398C70093F57C /* NSObject+SBJson.m in Sources */,
 				AA70373A164398C70093F57C /* SBJsonStreamParser.m in Sources */,

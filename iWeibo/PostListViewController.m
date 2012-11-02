@@ -8,6 +8,7 @@
 
 #import "PostListViewController.h"
 #import "User.h"
+#import "UIFeedListCell.h"
 
 
 @interface PostListViewController ()
@@ -18,7 +19,7 @@
 @end
 
 @implementation PostListViewController
-static int max_count = 5;
+static int max_count = 50;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,6 +37,7 @@ static int max_count = 5;
     delegate = [AppDelegate sharedAppDelegate];
     self.title = delegate.user.screen_name;
     user = delegate.user;
+   // self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self getNews];
 }
 
@@ -62,28 +64,47 @@ static int max_count = 5;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
-    return 0;
+    return [user.feeds count]+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"List Cell";
+    UIFeedListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    if (!cell) {
+        cell = [[UIFeedListCell alloc] init];
+        if (indexPath.row == [user.feeds count]) {
+            [cell setupCell];
+        }else  {
+            [cell setupCell:[user.feeds objectAtIndex:indexPath.row]];
+        }
+        
+    }
     
     return cell;
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == [user.feeds count]) {
+        return 26;
+    }else {
+        CGFloat height = 24.0;
+        Feed *feed = [user.feeds objectAtIndex:indexPath.row];
+        height = height + [self cellHeight:feed.text width:250 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
+        return height;
+    }
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -134,6 +155,18 @@ static int max_count = 5;
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+
+//calculate text height。
+-(CGFloat)cellHeight:(NSString*)contentText width:(CGFloat)width font:(UIFont *)font
+{
+    if ([contentText length] == 0) {
+        return 12;
+    }
+    CGSize size=[contentText sizeWithFont:font constrainedToSize:CGSizeMake(width-5, CGFLOAT_MAX) lineBreakMode:0];
+    CGFloat height = size.height + 22;
+    return height;
 }
 
 @end
