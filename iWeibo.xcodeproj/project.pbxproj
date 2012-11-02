@@ -156,10 +156,6 @@
 		AA40DEE01625BA0600C1F3AA = {
 			isa = PBXGroup;
 			children = (
-				AA70374A164399110093F57C /* QuartzCore.framework */,
-				AA703748164399070093F57C /* SystemConfiguration.framework */,
-				AA703746164399000093F57C /* CFNetwork.framework */,
-				AA703744164398F60093F57C /* Security.framework */,
 				AA40DEF51625BA0600C1F3AA /* iWeibo */,
 				AA40DEEE1625BA0600C1F3AA /* Frameworks */,
 				AA40DEEC1625BA0600C1F3AA /* Products */,
@@ -177,6 +173,10 @@
 		AA40DEEE1625BA0600C1F3AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA70374A164399110093F57C /* QuartzCore.framework */,
+				AA703748164399070093F57C /* SystemConfiguration.framework */,
+				AA703746164399000093F57C /* CFNetwork.framework */,
+				AA703744164398F60093F57C /* Security.framework */,
 				AA40DEEF1625BA0600C1F3AA /* UIKit.framework */,
 				AA40DEF11625BA0600C1F3AA /* Foundation.framework */,
 				AA40DEF31625BA0600C1F3AA /* CoreGraphics.framework */,
