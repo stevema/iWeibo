@@ -312,8 +312,8 @@ static NSOperationQueue *_sharedNetworkQueue;
     return nil;
   }
   
-  NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@://%@", useSSL ? @"https" : @"http", self.hostName];
-
+ NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@://%@", useSSL ? @"https" : @"http", self.hostName];
+    //NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@", self.hostName];
   if(self.portNumber != 0)
     [urlString appendFormat:@":%d", self.portNumber];
   

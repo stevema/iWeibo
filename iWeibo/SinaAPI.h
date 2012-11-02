@@ -23,9 +23,15 @@ typedef void (^RequestErrorBlock)(NSString *msg);
 
 @property (nonatomic, strong)NSMutableDictionary *successObject;
 
+-(MKNetworkOperation *)getUserInfo:(NSMutableDictionary *)filters
+                          onComplete:(RequestCompleteBlock) completionHandler
+                             onError:(RequestErrorBlock) errorHandler
+                            ssl:(BOOL)ssl;
+
 -(MKNetworkOperation *)listOpenWeibo:(NSMutableDictionary *)filters
                           onComplete:(RequestCompleteBlock) completionHandler
-                             onError:(RequestErrorBlock) errorHandler;
+                             onError:(RequestErrorBlock) errorHandler
+                            ssl:(BOOL)ssl;
 
 -(MKNetworkOperation*) downloadFileFrom:(NSString *)url
                                  saveTo:(NSString *)path

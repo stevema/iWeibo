@@ -9,7 +9,9 @@
 #import "PostListViewController.h"
 
 @interface PostListViewController ()
-
+{
+    AppDelegate *delegate;
+}
 @end
 
 @implementation PostListViewController
@@ -19,7 +21,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        self.title = @"微博";
+        
     }
     return self;
 }
@@ -27,12 +29,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    delegate = [AppDelegate sharedAppDelegate];
+    self.title = delegate.user.screen_name;
+    [self getNews];
+}
+
+-(void)getNews
+{
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning

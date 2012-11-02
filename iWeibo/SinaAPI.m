@@ -53,16 +53,49 @@
     return operation;
 }
 
+-(MKNetworkOperation *)getUserInfo:(NSMutableDictionary *)filters
+                        onComplete:(RequestCompleteBlock) completionHandler
+                           onError:(RequestErrorBlock) errorHandler
+                            ssl:(BOOL)ssl;
+{
+    NSString *url = [[NSString alloc] initWithFormat:@"users/show.json"];
+    
+    MKNetworkOperation *op = [self operationWithPath:url
+                                              params:filters
+                                          httpMethod:@"GET"
+                              ssl:ssl];
+    NSLog(@"request url is :%@",filters);
+    [op onCompletion:^(MKNetworkOperation *completedOperation) {
+        
+        NSDictionary *data = [self parseResponseWithOperation:completedOperation];
+        
+        if (data!=nil)
+        {
+            completionHandler(data);
+        }
+        
+        
+    } onError:^(NSError *error) {
+        
+        errorHandler(@"Request Error");
+        
+    }];
+    
+    return [self sendOperation:op];
+}
+
 
 -(MKNetworkOperation *)listOpenWeibo:(NSMutableDictionary *)filters
                           onComplete:(RequestCompleteBlock) completionHandler
-                             onError:(RequestErrorBlock) errorHandler;
+                             onError:(RequestErrorBlock) errorHandler
+                            ssl:(BOOL)ssl;
 {
     NSString *url = [[NSString alloc] initWithFormat:@"statuses/friends_timeline"];
     
     MKNetworkOperation *op = [self operationWithPath:url
                                               params:filters
-                                          httpMethod:@"GET"];
+                                          httpMethod:@"GET"
+                                                 ssl:ssl];
     [op onCompletion:^(MKNetworkOperation *completedOperation) {
         
         NSDictionary *data = [self parseResponseWithOperation:completedOperation];

@@ -44,15 +44,17 @@
                     forKey:@"x-client-version"];
     _sinaAPI = [[SinaAPI alloc] initWithHostName:HOSTS customHeaderFields:headerFields];
     [_sinaAPI useCache];
-
+    _user = [[User alloc] init];
     _weibo = [[SinaWeibo alloc] initWithAppKey:APP_KEY appSecret:APP_SCRRET appRedirectURI:@"http://weibo.com/chunlinpage" ssoCallbackScheme:@"sinaweibosso562653073" andDelegate:self];
     
     
-    NSString *authToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"SinaAccessToken"];
-    if (authToken == nil) {
+    //NSString *authToken = [[[NSUserDefaults standardUserDefaults] objectForKey:@"authData"] valueForKey:@"accessToken"];
+    NSDictionary *authData = [[NSUserDefaults standardUserDefaults] objectForKey:@"authData"];
+    if ([authData valueForKey:@"accessToken"] == nil) {
         [_weibo logIn];
-        [self setUpMainUI];
     }else {
+        _user.access_token = [authData valueForKey:@"accessToken"];
+        _user.user_id = [authData valueForKey:@"userID"];
        [self setUpMainUI]; 
     }
     
@@ -84,24 +86,36 @@
     [[NSUserDefaults standardUserDefaults] setObject:authData forKey:@"authData"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    _user.access_token = _weibo.accessToken;
+    _user.user_id = _weibo.userID ;
+    [self setUpMainUI];
 }
 
 -(void)setUpMainUI
 {
-    _postListViewController = [[PostListViewController alloc] initWithStyle:UITableViewStylePlain];
-    _notificationViewController = [[NotificationViewController alloc] initWithStyle:UITableViewStylePlain];
-    _friendsViewController = [[FriendsViewController alloc] initWithNibName:nil bundle:nil];
-    _moreViewController = [[MoreViewController alloc] initWithNibName:nil bundle:nil];
+    NSMutableDictionary *filters = [[NSMutableDictionary alloc] init];
+    [filters setValue:_user.access_token forKey:@"access_token"];
+    [filters setValue:[NSString stringWithFormat:@"%@",_user.user_id] forKey:@"uid"];
+    [_user getUserInfo:filters onComplete:^(NSDictionary *data){
+        NSLog(@"user name is:%@",_user.screen_name);
+        _postListViewController = [[PostListViewController alloc] initWithStyle:UITableViewStylePlain];
+        _notificationViewController = [[NotificationViewController alloc] initWithStyle:UITableViewStylePlain];
+        _friendsViewController = [[FriendsViewController alloc] initWithNibName:nil bundle:nil];
+        _moreViewController = [[MoreViewController alloc] initWithNibName:nil bundle:nil];
+        
+        _postListNavController = [[UINavigationController alloc] initWithRootViewController:_postListViewController];
+        _notificationNavController = [[UINavigationController alloc] initWithRootViewController:_notificationViewController];
+        _friendsNavController = [[UINavigationController alloc] initWithRootViewController:_friendsViewController];
+        _moreNavController = [[UINavigationController alloc] initWithRootViewController:_moreViewController];
+        
+        NSArray *controllers = [[NSArray alloc] initWithObjects:_postListNavController,_notificationNavController,_friendsNavController,_moreNavController, nil];
+        _tabBarController = [[UITabBarController alloc] init];
+        [_tabBarController setViewControllers:controllers];
+        self.window.rootViewController = _tabBarController;
+    } onError:^(NSString *msg){
+        
+    }];
     
-    _postListNavController = [[UINavigationController alloc] initWithRootViewController:_postListViewController];
-    _notificationNavController = [[UINavigationController alloc] initWithRootViewController:_notificationViewController];
-    _friendsNavController = [[UINavigationController alloc] initWithRootViewController:_friendsViewController];
-    _moreNavController = [[UINavigationController alloc] initWithRootViewController:_moreViewController];
-    
-    NSArray *controllers = [[NSArray alloc] initWithObjects:_postListNavController,_notificationNavController,_friendsNavController,_moreNavController, nil];
-    _tabBarController = [[UITabBarController alloc] init];
-    [_tabBarController setViewControllers:controllers];
-    self.window.rootViewController = _tabBarController;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -22,6 +22,7 @@
 		AA40DF291625C8CF00C1F3AA /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA40DF281625C8CF00C1F3AA /* logo@2x.png */; };
 		AA40DF2B1625C97600C1F3AA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA40DF2A1625C97600C1F3AA /* Default@2x.png */; };
 		AA40DF2D1625C98300C1F3AA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA40DF2C1625C98300C1F3AA /* Default.png */; };
+		AA4F5F971643CFF200418729 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4F5F961643CFF200418729 /* Feed.m */; };
 		AA7036F6164393160093F57C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7036F5164393160093F57C /* User.m */; };
 		AA70370E164393D70093F57C /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7036FB164393D70093F57C /* NSAlert+MKNetworkKitAdditions.m */; };
 		AA70370F164393D70093F57C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7036FD164393D70093F57C /* NSData+Base64.m */; };
@@ -81,6 +82,8 @@
 		AA40DF281625C8CF00C1F3AA /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo@2x.png"; path = "../logo@2x.png"; sourceTree = "<group>"; };
 		AA40DF2A1625C97600C1F3AA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		AA40DF2C1625C98300C1F3AA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		AA4F5F951643CFF200418729 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
+		AA4F5F961643CFF200418729 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
 		AA7036F4164393160093F57C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		AA7036F5164393160093F57C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		AA7036FA164393D70093F57C /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
@@ -269,6 +272,8 @@
 				AA7036F5164393160093F57C /* User.m */,
 				AA70374D16439CCB0093F57C /* Photo.h */,
 				AA70374E16439CCB0093F57C /* Photo.m */,
+				AA4F5F951643CFF200418729 /* Feed.h */,
+				AA4F5F961643CFF200418729 /* Feed.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -495,6 +500,7 @@
 				AA7037631643AA200093F57C /* SinaWeibo.m in Sources */,
 				AA7037641643AA200093F57C /* SinaWeiboAuthorizeView.m in Sources */,
 				AA7037651643AA200093F57C /* SinaWeiboRequest.m in Sources */,
+				AA4F5F971643CFF200418729 /* Feed.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

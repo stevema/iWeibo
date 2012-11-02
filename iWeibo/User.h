@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseModel.h"
+#import "Feed.h"
 
 @interface User :BaseModel
 
+@property(nonatomic,strong)NSString *access_token;
 @property(nonatomic,strong)NSString *user_id;
 @property(nonatomic,strong)NSString *screen_name;
 @property(nonatomic,strong)NSString *name;
@@ -22,4 +24,14 @@
 @property(nonatomic)int statuses_count;
 @property(nonatomic)int favourites_count;
 @property(nonatomic,strong)NSString *avatar_large;
+@property(nonatomic,strong)Feed *feed;
+
+-(void) getUserInfo:(NSMutableDictionary *) filters
+          onComplete:(RequestCompleteBlock) completionHandler
+             onError:(RequestErrorBlock) errorHandler;
+
+-(void) listOpenWeibo:(NSMutableDictionary *) filters
+         onComplete:(RequestCompleteBlock) completionHandler
+            onError:(RequestErrorBlock) errorHandler;
+
 @end
