@@ -24,6 +24,9 @@
 @synthesize tabBarController = _tabBarController;
 
 @synthesize sinaAPI = _sinaAPI;
+@synthesize user = _user;
+
+@synthesize weibo = _weibo;
 
 +(AppDelegate*)sharedAppDelegate
 {
@@ -40,8 +43,14 @@
     [headerFields setValue:[NSString stringWithFormat:@"%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]
                     forKey:@"x-client-version"];
     _sinaAPI = [[SinaAPI alloc] initWithHostName:HOSTS customHeaderFields:headerFields];
+    [_sinaAPI useCache];
+
+    _weibo = [[SinaWeibo alloc] initWithAppKey:APP_KEY appSecret:APP_SCRRET appRedirectURI:@"http://weibo.com/chunlinpage" ssoCallbackScheme:@"sinaweibosso562653073" andDelegate:self];
+    
+    
     NSString *authToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"SinaAccessToken"];
     if (authToken == nil) {
+        [_weibo logIn];
         [self setUpMainUI];
     }else {
        [self setUpMainUI]; 
@@ -49,6 +58,32 @@
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate);
+    [self storeAuthData];
+}
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [_weibo handleOpenURL:url];
+}
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [_weibo handleOpenURL:url];
+}
+
+- (void)storeAuthData
+{
+    NSDictionary *authData = [NSDictionary dictionaryWithObjectsAndKeys:
+                              _weibo.accessToken, @"accessToken",
+                              _weibo.expirationDate, @"expDate",
+                              _weibo.userID, @"userID",
+                              _weibo.refreshToken, @"refresh_token", nil];
+    [[NSUserDefaults standardUserDefaults] setObject:authData forKey:@"authData"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
 }
 
 -(void)setUpMainUI

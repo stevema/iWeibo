@@ -11,9 +11,12 @@
 #import "NotificationViewController.h"
 #import "FriendsViewController.h"
 #import "MoreViewController.h"
+#import "SinaWeibo.h"
+#import "SinaWeiboRequest.h"
 #import "SinaAPI.h"
+#import "User.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,SinaWeiboDelegate,SinaWeiboRequestDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -30,6 +33,9 @@
 @property (strong, nonatomic) UITabBarController *tabBarController;
 
 @property(strong, nonatomic) SinaAPI *sinaAPI;
+@property(strong, nonatomic) User *user;
+
+@property(strong, nonatomic) SinaWeibo *weibo;
 
 
 +(AppDelegate*)sharedAppDelegate;

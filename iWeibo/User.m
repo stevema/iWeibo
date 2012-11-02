@@ -22,6 +22,10 @@
 @synthesize favourites_count = _favourites_count;
 @synthesize avatar_large = _avatar_large;
 
++(id)setUp
+{
+    
+}
 
 -(id)initWithData:(NSDictionary *)data
 {

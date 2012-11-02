@@ -14,3 +14,5 @@
 #endif
 
 #define HOSTS @"https://api.weibo.com/2/"
+#define APP_KEY @"562653073"
+#define APP_SCRRET @"0ad5e1b27174ba28376981f5e2be32e7"
