@@ -1,1 +1,1 @@
-This is a personal app demo for Sina Weibo}
+This is a personal app demo for Sina Weibo
