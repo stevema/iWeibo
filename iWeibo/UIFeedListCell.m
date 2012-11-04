@@ -31,7 +31,9 @@
     _textView.scrollEnabled = NO;
     _textView.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0];
     _textView.backgroundColor = [UIColor clearColor];
+    _textView.userInteractionEnabled = NO;
     [self addSubview:_textView];
+   
     
 }
 

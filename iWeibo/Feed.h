@@ -18,6 +18,7 @@
 @property(nonatomic)int comments_count;
 @property(nonatomic,strong)User *feed_user;
 @property(nonatomic,strong)Feed *retweeted_feed;
+@property(nonatomic)BOOL isRetweet;
 
 -(id)initWithData:(NSDictionary *)data;
 @end

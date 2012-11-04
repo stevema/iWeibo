@@ -16,6 +16,7 @@
 @synthesize comments_count = _comments_count;
 @synthesize feed_user = _feed_user;
 @synthesize retweeted_feed = _retweeted_feed;
+@synthesize isRetweet = _isRetweet;
 
 -(id)initWithData:(NSDictionary *)data
 {
@@ -28,8 +29,10 @@
         _feed_user = [[User alloc] initWithData:[data valueForKey:@"user"]];
         if ([data objectForKey:@"retweeted_status"]) {
             _retweeted_feed = [self initWithData:[data valueForKey:@"retweeted_status"]];
+            _isRetweet = YES;
         }else {
             _retweeted_feed = nil;
+            _isRetweet = NO;
         }
         
     }

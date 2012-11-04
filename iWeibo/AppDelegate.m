@@ -57,12 +57,28 @@
     
     //NSString *authToken = [[[NSUserDefaults standardUserDefaults] objectForKey:@"authData"] valueForKey:@"accessToken"];
     NSDictionary *authData = [[NSUserDefaults standardUserDefaults] objectForKey:@"authData"];
-    if ([authData valueForKey:@"accessToken"] == nil) {
+    
+    
+   
+    if ([authData valueForKey:@"accessToken"] == nil ) {
         [_weibo logIn];
     }else {
-        _user.access_token = [authData valueForKey:@"accessToken"];
-        _user.user_id = [authData valueForKey:@"userID"];
-       [self setUpMainUI]; 
+        NSDateFormatter *format = [[NSDateFormatter alloc] init];
+        NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+        [format setTimeZone:gmt];
+        [format setDateFormat:@"yy-MM-dd HH:mm:ss Z"];
+        NSLog(@"auth exp date is :%@",[authData valueForKey:@"expDate"]);
+        NSDate *date = [format dateFromString:[NSString stringWithFormat:@"%@",[authData valueForKey:@"expDate"]]];
+        NSTimeInterval timeInt = [date timeIntervalSince1970];
+        NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
+        if (now > timeInt) {
+            [_weibo logIn];
+        }else {
+            _user.access_token = [authData valueForKey:@"accessToken"];
+            _user.user_id = [authData valueForKey:@"userID"];
+            [self setUpMainUI];
+        }
+         
     }
     
     
