@@ -22,7 +22,7 @@
     self = [self initWithFrame:frame];
     
     _photo = photo;
-    _photoView = [[UIImageView alloc] initWithFrame:CGRectMake(frame.origin.x, 0, frame.size.width-(frame.origin.x * 2), frame.size.height)];
+    _photoView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
     _photoView.contentMode = UIViewContentModeScaleAspectFill;
     
     _progressView = [[DDProgressView alloc] initWithFrame:CGRectMake(105, (frame.size.height - 5) / 2, 100, 5)];
@@ -55,6 +55,10 @@
         _progressView.hidden = YES;
         _reloadButton.hidden = YES;
         _photoView.image = _photo.image;
+        CGFloat height = _photo.image.size.height;
+        CGFloat width = _photo.image.size.width;
+        CGFloat vs = width / height;
+        self.frame = CGRectMake(0, 0, 320, height*vs);
         _photoView.clipsToBounds = YES;
         [self addSubview:_photoView];
     }
