@@ -67,9 +67,9 @@
 }
 
 - (void)setupStrings{
-  textPull = @"pull to refresh...";
-  textRelease = @"release to refresh...";
-  textLoading = @"loading...";
+  textPull = @"下拉可以刷新...";
+  textRelease = @"松开刷新...";
+  textLoading = @"载入中...";
 }
 
 - (void)addPullToRefreshHeader {

@@ -19,7 +19,7 @@
 @end
 
 @implementation PostListViewController
-static int max_count = 2;
+static int max_count = 30;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,6 +35,26 @@ static int max_count = 2;
 {
     [super viewDidLoad];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topBar_bg"] forBarMetrics:UIBarMetricsDefault];
+    UIView *leftBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
+    leftBarView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"topBar_bg"]];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarView];
+    UIButton *addWeiboButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    addWeiboButton.frame = CGRectMake(10, 2, 21, 18);
+    [addWeiboButton addTarget:self action:@selector(addWeibo) forControlEvents:UIControlEventTouchUpInside];
+    [addWeiboButton setBackgroundImage:[UIImage imageNamed:@"add_feed"] forState:UIControlStateNormal];
+    //[addWeiboButton setBackgroundImage:[UIImage imageNamed:@"add_feed_hi"] forState:UIControlStateHighlighted];
+    [leftBarView addSubview:addWeiboButton];
+    
+    UIView *rightBarView = [[UIView alloc] initWithFrame:CGRectMake(280, 0, 50, 20)];
+    rightBarView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"topBar_bg"]];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarView];
+    UIButton *addPhotoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    addPhotoButton.frame = CGRectMake(20, 2, 22, 17);
+    [addPhotoButton addTarget:self action:@selector(addWeibo) forControlEvents:UIControlEventTouchUpInside];
+    [addPhotoButton setBackgroundImage:[UIImage imageNamed:@"add_photo"] forState:UIControlStateNormal];
+    //[addPhotoButton setBackgroundImage:[UIImage imageNamed:@"add_photo"] forState:UIControlStateHighlighted];
+    [rightBarView addSubview:addPhotoButton];
+    
     self.view.backgroundColor = [UIColor colorWithRed:0xF2/255.0 green:0xF2/255.0 blue:0xF2/255.0 alpha:0xFF/255.0];
     delegate = [AppDelegate sharedAppDelegate];
     self.title = delegate.user.screen_name;
@@ -54,6 +74,16 @@ static int max_count = 2;
     } onError:^(NSString *msg){
     
     }];
+}
+
+-(void)addWeibo
+{
+    
+}
+
+-(void)addPhoto
+{
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,7 +116,10 @@ static int max_count = 2;
     if (!cell) {
         cell = [[UIFeedListCell alloc] init];
         if (indexPath.row == [user.feeds count]) {
-            [cell setupCell];
+            UILabel *listMore = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 300, 30)];
+            listMore.backgroundColor = [UIColor clearColor];
+            listMore.text = @"加载更多……";
+            [cell addSubview:listMore];
         }else  {
             [cell setupCell:[user.feeds objectAtIndex:indexPath.row]];
         }
@@ -98,7 +131,7 @@ static int max_count = 2;
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == [user.feeds count]) {
-        return 26;
+        return 36;
     }else {
         CGFloat height = 24.0;
         Feed *feed = [user.feeds objectAtIndex:indexPath.row];
@@ -149,6 +182,22 @@ static int max_count = 2;
 }
 */
 
+- (void)refresh 
+{
+    NSMutableDictionary *filters = [[NSMutableDictionary alloc] init];
+    [filters setValue:user.access_token forKey:@"access_token"];
+    [filters setObject:[NSNumber numberWithInt:max_count] forKey:@"count"];
+    Feed *last = [user.feeds objectAtIndex:0];
+    [filters setValue:last.feed_id forKey:@"since_id"];
+    [user listOpenWeibo:filters onComplete:^(NSDictionary *data){
+        NSLog(@"more data is %@",data);
+        [self stopLoading];
+        [self.tableView reloadData];
+    } onError:^(NSString *msg){
+        
+    }];
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -160,6 +209,19 @@ static int max_count = 2;
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    if (indexPath.row == [user.feeds count]) {
+        NSMutableDictionary *filters = [[NSMutableDictionary alloc] init];
+        [filters setValue:user.access_token forKey:@"access_token"];
+        [filters setObject:[NSNumber numberWithInt:max_count] forKey:@"count"];
+        Feed *last = [user.feeds objectAtIndex:indexPath.row-1];
+        [filters setValue:last.feed_id forKey:@"max_id"];
+        [user listOpenWeibo:filters onComplete:^(NSDictionary *data){
+            NSLog(@"more data is %@",data);
+            [self.tableView reloadData];
+        } onError:^(NSString *msg){
+            
+        }];
+    }
 }
 
 

@@ -52,7 +52,10 @@
 
 -(void)setupCell;
 {
-    
+    UILabel *listMore = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 300, 30)];
+    listMore.backgroundColor = [UIColor clearColor];
+    listMore.text = @"加载更多……";
+    [self addSubview:listMore];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

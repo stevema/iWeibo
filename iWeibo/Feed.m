@@ -32,13 +32,13 @@
         _feed_user = [[User alloc] initWithData:[data valueForKey:@"user"]];
         NSLog(@"feed user is :%@",_feed_user.screen_name);
         //_feed_user = [[User alloc] initWithData:[[data valueForKey:@"retweeted_status"] valueForKey:@"user"]];
-        if ([data objectForKey:@"retweeted_status"]) {
-            _retweeted_feed = [self initWithData:[data valueForKey:@"retweeted_status"]];
-            _isRetweet = YES;
-        }else {
-            _retweeted_feed = nil;
-            _isRetweet = NO;
-        }
+//        if ([data objectForKey:@"retweeted_status"]) {
+//            _retweeted_feed = [self initWithData:[data valueForKey:@"retweeted_status"]];
+//            _isRetweet = YES;
+//        }else {
+//            _retweeted_feed = nil;
+//            _isRetweet = NO;
+//        }
         _thumbnail_pic = [data valueForKey:@"thumbnail_pic"]==nil?nil:[data valueForKey:@"thumbnail_pic"];
         _bmiddle_pic = [data valueForKey:@"bmiddle_pic"]==nil?nil:[data valueForKey:@"bmiddle_pic"];
         _original_pic = [data valueForKey:@"original_pic"]==nil?nil:[data valueForKey:@"original_pic"];

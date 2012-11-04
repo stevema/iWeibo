@@ -89,7 +89,7 @@
                              onError:(RequestErrorBlock) errorHandler
                             ssl:(BOOL)ssl;
 {
-    NSString *url = [[NSString alloc] initWithFormat:@"statuses/friends_timeline.json"];
+    NSString *url = [[NSString alloc] initWithFormat:@"statuses/home_timeline.json"];
     
     MKNetworkOperation *op = [self operationWithPath:url
                                               params:filters

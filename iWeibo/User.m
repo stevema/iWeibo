@@ -78,8 +78,16 @@
     [[self api] listOpenWeibo:filters onComplete:^(NSDictionary *data){
         NSMutableArray *items = [[NSMutableArray alloc] initWithArray:[data valueForKey:@"statuses"]];
         for (int i=0; i<[items count]; i++) {
-            Feed *feed = [[Feed alloc] initWithData:[items objectAtIndex:i]];
-            [_feeds addObject:feed];
+            if ([filters objectForKey:@"max_id"] && i == 0) {
+                
+            }else if ([filters objectForKey:@"since_id"]) {
+                Feed *feed = [[Feed alloc] initWithData:[items objectAtIndex:i]];
+                [_feeds insertObject:feed atIndex:i];
+            }else {
+                Feed *feed = [[Feed alloc] initWithData:[items objectAtIndex:i]];
+                [_feeds addObject:feed];
+            }
+            
         }
         completionHandler(data);
     } onError:^(NSString *msg){

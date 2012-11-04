@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Feed.h"
+
 @interface UIFeedListCell : UITableViewCell
 
 @property(nonatomic,strong)UIImageView *avatarView;
