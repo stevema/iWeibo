@@ -5,10 +5,11 @@
 //  Created by Steve on 10/10/12.
 //  Copyright (c) 2012 Steve. All rights reserved.
 //
-
+#import <QuartzCore/QuartzCore.h>
 #import "PostListViewController.h"
 #import "User.h"
 #import "UIFeedListCell.h"
+#import "AddWeiboViewController.h"
 
 
 @interface PostListViewController ()
@@ -20,6 +21,7 @@
 
 @implementation PostListViewController
 static int max_count = 30;
+static const NSTimeInterval kAnimationDuration = 0.40f;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -78,7 +80,16 @@ static int max_count = 30;
 
 -(void)addWeibo
 {
+    AddWeiboViewController *addWeiboViewController = [[AddWeiboViewController alloc] initWithNibName:nil bundle:nil];
+    CATransition *transition = [CATransition animation];
+    transition.duration = kAnimationDuration;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromTop;
+    transition.delegate = self;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
     
+    [self.navigationController pushViewController:addWeiboViewController animated:NO];
 }
 
 -(void)addPhoto
