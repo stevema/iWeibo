@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AddWeiboViewController : UIViewController
-
+{
+    UITextField *weiboContentView;
+}
 @end
