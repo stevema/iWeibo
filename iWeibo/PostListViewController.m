@@ -34,6 +34,8 @@ static int max_count = 50;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topBar_bg"] forBarMetrics:UIBarMetricsDefault];
+    self.view.backgroundColor = [UIColor colorWithRed:0xF2/255.0 green:0xF2/255.0 blue:0xF2/255.0 alpha:0xFF/255.0];
     delegate = [AppDelegate sharedAppDelegate];
     self.title = delegate.user.screen_name;
     user = delegate.user;

@@ -87,7 +87,6 @@
 
 - (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
 {
-    NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate);
     [self storeAuthData];
 }
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
@@ -134,6 +133,7 @@
         NSArray *controllers = [[NSArray alloc] initWithObjects:_postListNavController,_notificationNavController,_friendsNavController,_moreNavController, nil];
         _tabBarController = [[UITabBarController alloc] init];
         [_tabBarController setViewControllers:controllers];
+        [_tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"topBar_bg"]];
         self.window.rootViewController = _tabBarController;
         
     } onError:^(NSString *msg){

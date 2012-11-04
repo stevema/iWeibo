@@ -18,6 +18,9 @@
 @property(nonatomic)int comments_count;
 @property(nonatomic,strong)User *feed_user;
 @property(nonatomic,strong)Feed *retweeted_feed;
+@property(nonatomic,strong)NSString *thumbnail_pic;
+@property(nonatomic,strong)NSString *bmiddle_pic;
+@property(nonatomic,strong)NSString *original_pic;
 @property(nonatomic)BOOL isRetweet;
 
 -(id)initWithData:(NSDictionary *)data;

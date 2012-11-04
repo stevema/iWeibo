@@ -17,6 +17,9 @@
 @synthesize feed_user = _feed_user;
 @synthesize retweeted_feed = _retweeted_feed;
 @synthesize isRetweet = _isRetweet;
+@synthesize thumbnail_pic = _thumbnail_pic;
+@synthesize bmiddle_pic = _bmiddle_pic;
+@synthesize original_pic = _original_pic;
 
 -(id)initWithData:(NSDictionary *)data
 {
@@ -34,6 +37,10 @@
             _retweeted_feed = nil;
             _isRetweet = NO;
         }
+        _thumbnail_pic = [data valueForKey:@"thumbnail_pic"]==nil?nil:[data valueForKey:@"thumbnail_pic"];
+        _bmiddle_pic = [data valueForKey:@"bmiddle_pic"]==nil?nil:[data valueForKey:@"bmiddle_pic"];
+        _original_pic = [data valueForKey:@"original_pic"]==nil?nil:[data valueForKey:@"original_pic"];
+        
         
     }
     return self;

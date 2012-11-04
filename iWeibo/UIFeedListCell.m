@@ -23,7 +23,8 @@
    // [self addSubview:_avatarView];
     [self downloadPhoto];
     
-    _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(57, 4, 250, 18.0)];
+    _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(57, 4, 250, 18.0)];\
+    _nameLabel.textColor = [UIColor colorWithRed:0.33f green:0.33f blue:0.33f alpha:1.00f];
     _nameLabel.text = feed.feed_user.screen_name;
     _nameLabel.font = [UIFont systemFontOfSize:18.0];
     _nameLabel.backgroundColor = [UIColor clearColor];
@@ -31,6 +32,7 @@
     
     _textView = [[UITextView alloc] initWithFrame:CGRectMake(57-5, 22, 250, [self cellHeight:feed.text width:250-10 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]])];
     _textView.text = feed.text;
+    _textView.textColor = [UIColor colorWithRed:0.33f green:0.33f blue:0.33f alpha:1.00f];
     _textView.editable = NO;
     _textView.scrollEnabled = NO;
     _textView.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0];
