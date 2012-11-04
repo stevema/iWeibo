@@ -58,7 +58,7 @@
     //NSString *authToken = [[[NSUserDefaults standardUserDefaults] objectForKey:@"authData"] valueForKey:@"accessToken"];
     NSDictionary *authData = [[NSUserDefaults standardUserDefaults] objectForKey:@"authData"];
     
-    
+    NSLog(@"access token is :%@",[authData valueForKey:@"accessToken"]);
    
     if ([authData valueForKey:@"accessToken"] == nil ) {
         [_weibo logIn];

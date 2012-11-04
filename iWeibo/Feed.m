@@ -30,6 +30,8 @@
         _text = [data valueForKey:@"text"];
         _comments_count = [[data valueForKey:@"comments_count"] integerValue];
         _feed_user = [[User alloc] initWithData:[data valueForKey:@"user"]];
+        NSLog(@"feed user is :%@",_feed_user.screen_name);
+        //_feed_user = [[User alloc] initWithData:[[data valueForKey:@"retweeted_status"] valueForKey:@"user"]];
         if ([data objectForKey:@"retweeted_status"]) {
             _retweeted_feed = [self initWithData:[data valueForKey:@"retweeted_status"]];
             _isRetweet = YES;

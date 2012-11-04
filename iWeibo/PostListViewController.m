@@ -19,7 +19,7 @@
 @end
 
 @implementation PostListViewController
-static int max_count = 50;
+static int max_count = 2;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -103,6 +103,9 @@ static int max_count = 50;
         CGFloat height = 24.0;
         Feed *feed = [user.feeds objectAtIndex:indexPath.row];
         height = height + [self cellHeight:feed.text width:250-10 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
+        if (feed.thumbnail_pic) {
+            height = height + 70;
+        }
         return height;
     }
     

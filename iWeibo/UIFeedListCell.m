@@ -17,11 +17,10 @@
 
 -(void)setupCell:(Feed *)feed
 {
-    currentFeed = feed;
     _avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 4, 40, 40)];
     _avatarView.backgroundColor = [UIColor grayColor];
    // [self addSubview:_avatarView];
-    [self downloadPhoto];
+    [self downloadPhotoWithUrl:feed.feed_user.profile_image_url onView:_avatarView];
     
     _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(57, 4, 250, 18.0)];\
     _nameLabel.textColor = [UIColor colorWithRed:0.33f green:0.33f blue:0.33f alpha:1.00f];
@@ -30,7 +29,8 @@
     _nameLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:_nameLabel];
     
-    _textView = [[UITextView alloc] initWithFrame:CGRectMake(57-5, 22, 250, [self cellHeight:feed.text width:250-10 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]])];
+    CGFloat textHeight = [self cellHeight:feed.text width:250-10 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
+    _textView = [[UITextView alloc] initWithFrame:CGRectMake(57-5, 22, 250, textHeight)];
     _textView.text = feed.text;
     _textView.textColor = [UIColor colorWithRed:0.33f green:0.33f blue:0.33f alpha:1.00f];
     _textView.editable = NO;
@@ -41,6 +41,12 @@
     _textView.backgroundColor = [UIColor clearColor];
     [self addSubview:_textView];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (feed.thumbnail_pic) {
+       // UIImageView *feedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(57, 22+textHeight+10, 200, 60)];
+        UIImageView *feedImageView = [[UIImageView alloc] init];
+        [self downloadPhoto:feed.thumbnail_pic onView:feedImageView withHeight:(22+textHeight)];
+    }
     
 }
 
@@ -66,14 +72,37 @@
 }
 
 
--(void)downloadPhoto
+-(void)downloadPhotoWithUrl:(NSString *)url onView:(UIImageView *)imageView
 {
     Photo *photo = [[Photo alloc] init];
-    photo.url = currentFeed.feed_user.profile_image_url;
+    photo.url = url;
     [photo download:^(NSDictionary *pdata){
         
-        _avatarView.image = photo.image;
-        [self addSubview:_avatarView];
+        imageView.image = photo.image;
+        imageView.clipsToBounds = YES;
+        [self addSubview:imageView];
+    }
+onDownloadProgressChanged:^(double progress) {
+    
+}
+            onError:^(NSString *msg){
+                
+            }];
+    
+}
+
+-(void)downloadPhoto:(NSString *)url onView:(UIImageView *)imageView withHeight:(CGFloat)imageHeight
+{
+    Photo *photo = [[Photo alloc] init];
+    photo.url = url;
+    [photo download:^(NSDictionary *pdata){
+        
+        imageView.image = photo.image;
+        CGFloat vs = photo.image.size.width / photo.image.size.height;
+        CGFloat height = 60.0;
+        CGFloat width = height * vs;
+        imageView.frame = CGRectMake(57, imageHeight, width, 60);
+        [self addSubview:imageView];
     }
 onDownloadProgressChanged:^(double progress) {
     
