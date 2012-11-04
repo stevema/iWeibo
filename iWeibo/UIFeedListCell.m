@@ -8,6 +8,7 @@
 
 #import "UIFeedListCell.h"
 #import "Photo.h"
+#import "UISummaryPhotoView.h"
 
 @implementation UIFeedListCell
 
@@ -17,6 +18,8 @@
 
 -(void)setupCell:(Feed *)feed
 {
+    currentFeed = feed;
+    delegate = [AppDelegate sharedAppDelegate];
     _avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 4, 40, 40)];
     _avatarView.backgroundColor = [UIColor grayColor];
    // [self addSubview:_avatarView];
@@ -46,16 +49,30 @@
        // UIImageView *feedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(57, 22+textHeight+10, 200, 60)];
         UIImageView *feedImageView = [[UIImageView alloc] init];
         [self downloadPhoto:feed.thumbnail_pic onView:feedImageView withHeight:(22+textHeight)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBigPhoto)];
+        feedImageView.userInteractionEnabled = YES;
+        [feedImageView addGestureRecognizer:tap];
     }
     
 }
 
--(void)setupCell;
+-(void)showBigPhoto
 {
-    UILabel *listMore = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 300, 30)];
-    listMore.backgroundColor = [UIColor clearColor];
-    listMore.text = @"加载更多……";
-    [self addSubview:listMore];
+    Photo *photo = [[Photo alloc] init];
+    photo.url = currentFeed.original_pic;
+    showImageView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0,320 , [[UIScreen mainScreen] bounds].size.height)];
+    showImageView.backgroundColor = [UIColor blackColor];
+    UISummaryPhotoView *summaryImageView = [[UISummaryPhotoView alloc] initWithFrame:CGRectMake(0, 0,320 , [[UIScreen mainScreen] bounds].size.height) withPhoto:photo];
+    [showImageView addSubview:summaryImageView];
+    [delegate.window addSubview:showImageView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeSummaryView)];
+    showImageView.userInteractionEnabled = YES;
+    [showImageView addGestureRecognizer:tap];
+}
+
+-(void)removeSummaryView
+{
+    [showImageView removeFromSuperview];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

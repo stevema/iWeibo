@@ -17,6 +17,8 @@
 		AA03999A1644362D00CCAAD2 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA039999164435D600CCAAD2 /* PullRefreshTableViewController.m */; };
 		AA0399B11646A5FC00CCAAD2 /* add_feed_hi.png in Resources */ = {isa = PBXBuildFile; fileRef = AA0399AF1646A5FC00CCAAD2 /* add_feed_hi.png */; };
 		AA0399B21646A5FC00CCAAD2 /* add_feed_hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA0399B01646A5FC00CCAAD2 /* add_feed_hi@2x.png */; };
+		AA0399BC1646BB3900CCAAD2 /* DDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0399BB1646BB2E00CCAAD2 /* DDProgressView.m */; };
+		AA0399BD1646BB7E00CCAAD2 /* UISummaryPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0399B81646B8FC00CCAAD2 /* UISummaryPhotoView.m */; };
 		AA40DEF01625BA0600C1F3AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEEF1625BA0600C1F3AA /* UIKit.framework */; };
 		AA40DEF21625BA0600C1F3AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEF11625BA0600C1F3AA /* Foundation.framework */; };
 		AA40DEF41625BA0600C1F3AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEF31625BA0600C1F3AA /* CoreGraphics.framework */; };
@@ -82,6 +84,10 @@
 		AA039999164435D600CCAAD2 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
 		AA0399AF1646A5FC00CCAAD2 /* add_feed_hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_feed_hi.png; sourceTree = "<group>"; };
 		AA0399B01646A5FC00CCAAD2 /* add_feed_hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_feed_hi@2x.png"; sourceTree = "<group>"; };
+		AA0399B71646B8FC00CCAAD2 /* UISummaryPhotoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UISummaryPhotoView.h; sourceTree = "<group>"; };
+		AA0399B81646B8FC00CCAAD2 /* UISummaryPhotoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UISummaryPhotoView.m; sourceTree = "<group>"; };
+		AA0399BA1646BB2E00CCAAD2 /* DDProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDProgressView.h; sourceTree = "<group>"; };
+		AA0399BB1646BB2E00CCAAD2 /* DDProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDProgressView.m; sourceTree = "<group>"; };
 		AA40DEEB1625BA0600C1F3AA /* iWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA40DEEF1625BA0600C1F3AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA40DEF11625BA0600C1F3AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -202,6 +208,15 @@
 			name = PullToRefresh;
 			sourceTree = "<group>";
 		};
+		AA0399B91646BAD800CCAAD2 /* DDProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				AA0399BA1646BB2E00CCAAD2 /* DDProgressView.h */,
+				AA0399BB1646BB2E00CCAAD2 /* DDProgressView.m */,
+			);
+			name = DDProgressView;
+			sourceTree = "<group>";
+		};
 		AA40DEE01625BA0600C1F3AA = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +293,8 @@
 		AA40DF1F1625BFCD00C1F3AA /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				AA0399B71646B8FC00CCAAD2 /* UISummaryPhotoView.h */,
+				AA0399B81646B8FC00CCAAD2 /* UISummaryPhotoView.m */,
 				AA03998416442B8E00CCAAD2 /* UIFeedListCell.h */,
 				AA03998516442B8E00CCAAD2 /* UIFeedListCell.m */,
 			);
@@ -322,6 +339,7 @@
 		AA7036F7164393C30093F57C /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				AA0399B91646BAD800CCAAD2 /* DDProgressView */,
 				AA039997164435BB00CCAAD2 /* PullToRefresh */,
 				AA7037551643AA200093F57C /* JSONKit */,
 				AA7037581643AA200093F57C /* SinaWeibo */,
@@ -515,6 +533,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0399BD1646BB7E00CCAAD2 /* UISummaryPhotoView.m in Sources */,
+				AA0399BC1646BB3900CCAAD2 /* DDProgressView.m in Sources */,
 				AA03999A1644362D00CCAAD2 /* PullRefreshTableViewController.m in Sources */,
 				AA703738164398C60093F57C /* SBJsonParser.m in Sources */,
 				AA703739164398C70093F57C /* NSObject+SBJson.m in Sources */,
