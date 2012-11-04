@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Feed.h"
 @interface UIFeedListCell : UITableViewCell
-
+{
+    Feed *currentFeed;
+}
 @property(nonatomic,strong)UIImageView *avatarView;
 @property(nonatomic,strong)UILabel *nameLabel;
 @property(nonatomic,strong)UITextView *textView;

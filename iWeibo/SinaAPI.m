@@ -64,7 +64,6 @@
                                               params:filters
                                           httpMethod:@"GET"
                               ssl:ssl];
-    NSLog(@"request url is :%@",filters);
     [op onCompletion:^(MKNetworkOperation *completedOperation) {
         
         NSDictionary *data = [self parseResponseWithOperation:completedOperation];
@@ -96,7 +95,6 @@
                                               params:filters
                                           httpMethod:@"GET"
                                                  ssl:ssl];
-    NSLog(@"op url is :%@",op.url);
     [op onCompletion:^(MKNetworkOperation *completedOperation) {
         
         NSDictionary *data = [self parseResponseWithOperation:completedOperation];

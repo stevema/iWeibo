@@ -120,7 +120,6 @@
     [filters setValue:_user.access_token forKey:@"access_token"];
     [filters setValue:[NSString stringWithFormat:@"%@",_user.user_id] forKey:@"uid"];
     [_user getUserInfo:filters onComplete:^(NSDictionary *data){
-        NSLog(@"user name is:%@",_user.screen_name);
         [_splashView removeFromSuperview];
         _postListViewController = [[PostListViewController alloc] initWithStyle:UITableViewStylePlain];
         _notificationViewController = [[NotificationViewController alloc] initWithStyle:UITableViewStylePlain];
