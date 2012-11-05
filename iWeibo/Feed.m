@@ -44,7 +44,7 @@
         _thumbnail_pic = [data valueForKey:@"thumbnail_pic"]==nil?nil:[data valueForKey:@"thumbnail_pic"];
         _bmiddle_pic = [data valueForKey:@"bmiddle_pic"]==nil?nil:[data valueForKey:@"bmiddle_pic"];
         _original_pic = [data valueForKey:@"original_pic"]==nil?nil:[data valueForKey:@"original_pic"];
-        
+        _comments = [[NSMutableArray alloc] init];
         
     }
     return self;
@@ -54,7 +54,12 @@
           onComplete:(RequestCompleteBlock) completionHandler
              onError:(RequestErrorBlock) errorHandler;
 {
-    
+    [[self api] listWeiboComments:filters onComplete:^(NSDictionary *data){
+        _comments = [data valueForKey:@"comments"];
+        completionHandler(data);
+    } onError:^(NSString *msg){
+        errorHandler(msg);
+    } ssl:YES];
 }
 
 @end

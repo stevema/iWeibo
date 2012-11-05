@@ -10,6 +10,7 @@
 #import "Photo.h"
 #import "UIHRuler.h"
 #import "UICommentCell.h"
+#import "Comment.h"
 
 @interface WeiboViewController ()
 
@@ -34,6 +35,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    delegate = [AppDelegate sharedAppDelegate];
+    [self listComments];
+    
     self.view.backgroundColor = [UIColor colorWithRed:0xF2/255.0 green:0xF2/255.0 blue:0xF2/255.0 alpha:0xFF/255.0];
 
     UIView *leftBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 42, 40)];
@@ -87,9 +91,24 @@
     nameLabel.backgroundColor = [UIColor clearColor];
     [_userInfoView addSubview:nameLabel];
     
-    _mainContentView = [[UITableView alloc] initWithFrame:CGRectMake(0, 57, 320, [[UIScreen mainScreen] bounds].size.height-55) style:UITableViewStylePlain];
-    _mainContentView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:_mainContentView];
+    
+    
+}
+
+-(void)listComments
+{
+    NSMutableDictionary *filters = [[NSMutableDictionary alloc] init];
+    [filters setValue:delegate.user.access_token forKey:@"access_token"];
+    [filters setValue:_feed.feed_id forKey:@"id"];
+    [_feed listComments:filters onComplete:^(NSDictionary *data) {
+        _mainContentView = [[UITableView alloc] initWithFrame:CGRectMake(0, 57, 320, [[UIScreen mainScreen] bounds].size.height-55-100) style:UITableViewStylePlain];
+        _mainContentView.backgroundColor = [UIColor clearColor];
+        _mainContentView.delegate = self;
+        _mainContentView.dataSource = self;
+        [self.view addSubview:_mainContentView];
+    } onError:^(NSString *msg) {
+    
+    }];
 }
 
 -(void)addLike
@@ -102,14 +121,14 @@
 
 }
 
--(void)comment
+-(void)addComment
 {
     
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return (_feed.comments_count+1);
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -119,8 +138,7 @@
     
     if (!cell) {
         cell = [[UICommentCell alloc] init];
-        
-        
+        [cell setupCell:_feed atIndex:indexPath.row];
     }
     
     return cell;
@@ -128,7 +146,18 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    CGFloat height = 0.0;
+    if (indexPath.row == 0) {
+        height = [self cellHeight:_feed.text width:288-10 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
+        if (_feed.thumbnail_pic) {
+            height = height + 70;
+        }
+        return height + 40;
+    }else {
+        Comment *comment = [[Comment alloc] initWithData:[_feed.comments objectAtIndex:indexPath.row-1]];
+        height = 25 + [self cellHeight:comment.text width:288-10 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
+        return height + 10;
+    }
 }
 
 -(void)back
@@ -154,6 +183,17 @@ onDownloadProgressChanged:^(double progress) {
             }];
     
 }
+
+-(CGFloat)cellHeight:(NSString*)contentText width:(CGFloat)width font:(UIFont *)font
+{
+    if ([contentText length] == 0) {
+        return 12;
+    }
+    CGSize size=[contentText sizeWithFont:font constrainedToSize:CGSizeMake(width-10, CGFLOAT_MAX) lineBreakMode:0];
+    CGFloat height = size.height + 22;
+    return height;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

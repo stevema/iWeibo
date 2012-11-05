@@ -10,7 +10,9 @@
 #import "Feed.h"
 
 @interface WeiboViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
-
+{
+    AppDelegate *delegate;
+}
 @property(nonatomic,strong)Feed *feed;
 @property(nonatomic,strong)UIView *userInfoView;
 @property(nonatomic,strong)UIImageView *avatarView;

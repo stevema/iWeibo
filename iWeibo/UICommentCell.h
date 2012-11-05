@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Feed.h"
 
 @interface UICommentCell : UITableViewCell
 
+-(void)setupCell:(Feed *)feed atIndex:(int)index;
 @end

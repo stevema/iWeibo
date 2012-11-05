@@ -15,4 +15,6 @@
 @property(nonatomic,strong)NSString *comment_id;
 @property(nonatomic,strong)NSString *text;
 @property(nonatomic,strong)User *user;
+
+-(id)initWithData:(NSDictionary *)data;
 @end
