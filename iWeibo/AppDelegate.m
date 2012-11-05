@@ -138,7 +138,7 @@
         _tabBarController = [[UITabBarController alloc] init];
         [_tabBarController setViewControllers:controllers];
         [_tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tob-bg"]];
-        
+        //_tabBarController.tabBar.hidden = YES;
         self.window.rootViewController = _tabBarController;
         
         

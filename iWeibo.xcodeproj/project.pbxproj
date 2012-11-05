@@ -42,6 +42,11 @@
 		AA0399EE16478A4F00CCAAD2 /* tob-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA0399EC16478A4F00CCAAD2 /* tob-bg.png */; };
 		AA0399EF16478A4F00CCAAD2 /* tob-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA0399ED16478A4F00CCAAD2 /* tob-bg@2x.png */; };
 		AA0399F216478AE800CCAAD2 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0399F116478AE700CCAAD2 /* AppViewController.m */; };
+		AA0399F91647A26B00CCAAD2 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA0399F71647A26B00CCAAD2 /* bg.png */; };
+		AA0399FA1647A26B00CCAAD2 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA0399F81647A26B00CCAAD2 /* bg@2x.png */; };
+		AA039A011647B3D900CCAAD2 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = AA0399FF1647B3D800CCAAD2 /* camera.png */; };
+		AA039A021647B3D900CCAAD2 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA039A001647B3D800CCAAD2 /* camera@2x.png */; };
+		AA039A051647BCEE00CCAAD2 /* weiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA039A041647BCEE00CCAAD2 /* weiboViewController.m */; };
 		AA40DEF01625BA0600C1F3AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEEF1625BA0600C1F3AA /* UIKit.framework */; };
 		AA40DEF21625BA0600C1F3AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEF11625BA0600C1F3AA /* Foundation.framework */; };
 		AA40DEF41625BA0600C1F3AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA40DEF31625BA0600C1F3AA /* CoreGraphics.framework */; };
@@ -137,6 +142,12 @@
 		AA0399ED16478A4F00CCAAD2 /* tob-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tob-bg@2x.png"; sourceTree = "<group>"; };
 		AA0399F016478AE700CCAAD2 /* AppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppViewController.h; sourceTree = "<group>"; };
 		AA0399F116478AE700CCAAD2 /* AppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppViewController.m; sourceTree = "<group>"; };
+		AA0399F71647A26B00CCAAD2 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		AA0399F81647A26B00CCAAD2 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
+		AA0399FF1647B3D800CCAAD2 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		AA039A001647B3D800CCAAD2 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		AA039A031647BCEE00CCAAD2 /* weiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = weiboViewController.h; sourceTree = "<group>"; };
+		AA039A041647BCEE00CCAAD2 /* weiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = weiboViewController.m; sourceTree = "<group>"; };
 		AA40DEEB1625BA0600C1F3AA /* iWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA40DEEF1625BA0600C1F3AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA40DEF11625BA0600C1F3AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -339,6 +350,8 @@
 				AA0399BF1646C09500CCAAD2 /* AddWeiboViewController.m */,
 				AA0399F016478AE700CCAAD2 /* AppViewController.h */,
 				AA0399F116478AE700CCAAD2 /* AppViewController.m */,
+				AA039A031647BCEE00CCAAD2 /* weiboViewController.h */,
+				AA039A041647BCEE00CCAAD2 /* weiboViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -359,6 +372,10 @@
 		AA40DF2F1625C9C800C1F3AA /* images */ = {
 			isa = PBXGroup;
 			children = (
+				AA0399FF1647B3D800CCAAD2 /* camera.png */,
+				AA039A001647B3D800CCAAD2 /* camera@2x.png */,
+				AA0399F71647A26B00CCAAD2 /* bg.png */,
+				AA0399F81647A26B00CCAAD2 /* bg@2x.png */,
 				AA0399EC16478A4F00CCAAD2 /* tob-bg.png */,
 				AA0399ED16478A4F00CCAAD2 /* tob-bg@2x.png */,
 				AA0399D81647893D00CCAAD2 /* more.png */,
@@ -618,6 +635,10 @@
 				AA0399EB1647893E00CCAAD2 /* weibo@2x.png in Resources */,
 				AA0399EE16478A4F00CCAAD2 /* tob-bg.png in Resources */,
 				AA0399EF16478A4F00CCAAD2 /* tob-bg@2x.png in Resources */,
+				AA0399F91647A26B00CCAAD2 /* bg.png in Resources */,
+				AA0399FA1647A26B00CCAAD2 /* bg@2x.png in Resources */,
+				AA039A011647B3D900CCAAD2 /* camera.png in Resources */,
+				AA039A021647B3D900CCAAD2 /* camera@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +692,7 @@
 				AA03998616442B8E00CCAAD2 /* UIFeedListCell.m in Sources */,
 				AA0399C01646C09500CCAAD2 /* AddWeiboViewController.m in Sources */,
 				AA0399F216478AE800CCAAD2 /* AppViewController.m in Sources */,
+				AA039A051647BCEE00CCAAD2 /* weiboViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

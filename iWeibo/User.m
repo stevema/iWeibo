@@ -105,4 +105,39 @@
         errorHandler(msg);
     } ssl:YES];
 }
+
+-(void) deleteWeiboText:(NSMutableDictionary *) filters
+             onComplete:(RequestCompleteBlock) completionHandler
+                onError:(RequestErrorBlock) errorHandler;
+{
+    [[self api] deleteWeiboText:filters onComplete:^(NSDictionary *data){
+        completionHandler(data);
+    } onError:^(NSString *msg){
+        errorHandler(msg);
+    } ssl:YES];
+}
+
+-(void) getUserFans:(NSMutableDictionary *) filters
+         onComplete:(RequestCompleteBlock) completionHandler
+            onError:(RequestErrorBlock) errorHandler;
+{
+    [[self api] getUserFans:filters onComplete:^(NSDictionary *data) {
+        completionHandler(data);
+    } onError:^(NSString *msg){
+        errorHandler(msg);
+    } ssl:YES];
+}
+
+-(void) getUserFollows:(NSMutableDictionary *) filters
+            onComplete:(RequestCompleteBlock) completionHandler
+               onError:(RequestErrorBlock) errorHandler;
+{
+    [[self api] getUserFollows:filters onComplete:^(NSDictionary *data) {
+        completionHandler(data);
+    } onError:^(NSString *msg){
+        errorHandler(msg);
+    } ssl:YES];
+
+}
+
 @end

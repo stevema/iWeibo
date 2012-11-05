@@ -20,35 +20,38 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
 
 -(void)setupCell:(Feed *)feed
 {
+    self.backgroundColor = [UIColor clearColor];
     currentFeed = feed;
     delegate = [AppDelegate sharedAppDelegate];
-    UIView *contentView = [[UIView alloc] init];
-    contentView.backgroundColor = [UIColor colorWithRed:((double)arc4random() / ARC4RANDOM_MAX) green:((double)arc4random() / ARC4RANDOM_MAX) blue:((double)arc4random() / ARC4RANDOM_MAX) alpha:0.1];
-    [self addSubview:contentView];
+    contentView = [[UIView alloc] init];
+    contentView.backgroundColor = [UIColor colorWithRed:((double)arc4random() / ARC4RANDOM_MAX) green:((double)arc4random() / ARC4RANDOM_MAX) blue:((double)arc4random() / ARC4RANDOM_MAX) alpha:0.8];
+    //[self addSubview:contentView];
     
     _avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 4, 40, 40)];
     _avatarView.backgroundColor = [UIColor grayColor];
    // [self addSubview:_avatarView];
     [self downloadPhotoWithUrl:feed.feed_user.profile_image_url onView:_avatarView];
     
-    _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(57, 4, 250, 18.0)];\
+    _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(57, 4, 250, 18.0)];
     _nameLabel.textColor = [UIColor colorWithRed:0.33f green:0.33f blue:0.33f alpha:1.00f];
+    //_nameLabel.textColor = [UIColor whiteColor];
     _nameLabel.text = feed.feed_user.screen_name;
     _nameLabel.font = [UIFont systemFontOfSize:18.0];
     _nameLabel.backgroundColor = [UIColor clearColor];
-    [contentView addSubview:_nameLabel];
+    [self addSubview:_nameLabel];
     
     CGFloat textHeight = [self cellHeight:feed.text width:250-10 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
     _textView = [[UITextView alloc] initWithFrame:CGRectMake(57-5, 22, 250, textHeight)];
     _textView.text = feed.text;
     _textView.textColor = [UIColor colorWithRed:0.33f green:0.33f blue:0.33f alpha:1.00f];
+   // _textView.textColor = [UIColor whiteColor];
     _textView.editable = NO;
     _textView.scrollEnabled = NO;
     _textView.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0];
     _textView.backgroundColor = [UIColor clearColor];
     _textView.userInteractionEnabled = NO;
     _textView.backgroundColor = [UIColor clearColor];
-    [contentView addSubview:_textView];
+    [self addSubview:_textView];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (feed.thumbnail_pic) {
@@ -58,9 +61,9 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBigPhoto)];
         feedImageView.userInteractionEnabled = YES;
         [feedImageView addGestureRecognizer:tap];
-        contentView.frame = CGRectMake(0, 10, 320, 22+textHeight+60);
+        contentView.frame = CGRectMake(10, 10, 300, 22+textHeight+60);
     }else {
-        contentView.frame = CGRectMake(0, 10, 320, 22+textHeight);
+        contentView.frame = CGRectMake(10, 10, 300, 22+textHeight);
     }
     
 }

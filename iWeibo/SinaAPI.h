@@ -43,4 +43,19 @@ typedef void (^RequestErrorBlock)(NSString *msg);
                              onError:(RequestErrorBlock) errorHandler
                                  ssl:(BOOL)ssl;
 
+-(MKNetworkOperation *)deleteWeiboText:(NSMutableDictionary *)filters
+                          onComplete:(RequestCompleteBlock) completionHandler
+                             onError:(RequestErrorBlock) errorHandler
+                                 ssl:(BOOL)ssl;
+
+-(MKNetworkOperation *)getUserFans:(NSMutableDictionary *)filters
+                            onComplete:(RequestCompleteBlock) completionHandler
+                               onError:(RequestErrorBlock) errorHandler
+                                   ssl:(BOOL)ssl;
+
+-(MKNetworkOperation *)getUserFollows:(NSMutableDictionary *)filters
+                        onComplete:(RequestCompleteBlock) completionHandler
+                           onError:(RequestErrorBlock) errorHandler
+                               ssl:(BOOL)ssl;
+
 @end

@@ -36,7 +36,10 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topBar_bg"] forBarMetrics:UIBarMetricsDefault];
+    //self.navigationController.navigationBar.hidden = YES;
+    
     UIView *leftBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
     leftBarView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"topBar_bg"]];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarView];
@@ -61,8 +64,10 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
     delegate = [AppDelegate sharedAppDelegate];
     self.navigationController.navigationBar.topItem.title = delegate.user.screen_name;
     user = delegate.user;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self getNews];
+    
+    //self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg"]];
     
     
 }
@@ -86,8 +91,8 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
     CATransition *transition = [CATransition animation];
     transition.duration = kAnimationDuration;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    transition.type = kCATransitionPush;
-    transition.subtype = kCATransitionFromTop;
+    transition.type = kCATransitionFade;
+    transition.subtype = kCATransitionFade;
     transition.delegate = self;
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
     
@@ -96,7 +101,30 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
 
 -(void)addPhoto
 {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+		[self pickImage:UIImagePickerControllerSourceTypeCamera] ;
+    }
+    else
+    {
+        // let use choose image source
+		UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                             destructiveButtonTitle:nil
+                                                  otherButtonTitles:@"Use Camera", @"Choose from Album",nil];
+        [sheet showInView:delegate.window];
+	}
+}
+
+-(void) pickImage:(UIImagePickerControllerSourceType)sourceType {
+	UIImagePickerController *picker = [[UIImagePickerController alloc] init] ;
+	picker.delegate = self ;
+	picker.sourceType = sourceType ;
+    picker.allowsEditing = YES;
     
+   // AppDelegate *appDelegate = [AppDelegate sharedAppDelegate];
+    [delegate.postListNavController presentModalViewController:picker animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -152,7 +180,7 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
         if (feed.thumbnail_pic) {
             height = height + 70;
         }
-        return height+20;
+        return height;
     }
     
 }

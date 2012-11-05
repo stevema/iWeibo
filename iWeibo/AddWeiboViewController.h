@@ -16,5 +16,6 @@
     int textAmount;
     AppDelegate *delegate;
     UIButton *sendButton;
+    UIView *toolView;
 }
 @end

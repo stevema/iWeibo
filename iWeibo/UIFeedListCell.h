@@ -15,6 +15,7 @@
     Feed *currentFeed;
     AppDelegate *delegate;
     UIScrollView *showImageView;
+    UIView *contentView;
 }
 @property(nonatomic,strong)UIImageView *avatarView;
 @property(nonatomic,strong)UILabel *nameLabel;

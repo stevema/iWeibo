@@ -31,7 +31,8 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
 	// Do any additional setup after loading the view.
     delegate = [AppDelegate sharedAppDelegate];
     UIView *leftBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 22)];
-    self.view.backgroundColor = [UIColor colorWithRed:0xF2/255.0 green:0xF2/255.0 blue:0xF2/255.0 alpha:0xFF/255.0];
+    //self.view.backgroundColor = [UIColor colorWithRed:0xF2/255.0 green:0xF2/255.0 blue:0xF2/255.0 alpha:0xFF/255.0];
+    self.view.backgroundColor = [UIColor whiteColor];
     leftBarView.backgroundColor = [UIColor clearColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarView];
     UIButton *addWeiboButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -54,21 +55,40 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
     [rightBarView addSubview:sendButton];
     
     CGFloat contentViewHeight = [[UIScreen mainScreen] bounds].size.height-216-60;
-    weiboContentView = [[UIPlaceHolderTextView alloc] initWithFrame:CGRectMake(0, 0, 320, contentViewHeight)];
+    weiboContentView = [[UIPlaceHolderTextView alloc] initWithFrame:CGRectMake(0, 0, 320, contentViewHeight-65)];
     weiboContentView.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0];
     [weiboContentView becomeFirstResponder];
+    [weiboContentView setKeyboardType:UIKeyboardTypeTwitter];
     weiboContentView.delegate = self;
     [self.view addSubview:weiboContentView];
     
-    textCount = [[UILabel alloc] initWithFrame:CGRectMake(270, contentViewHeight-40, 50, 20)];
+    toolView = [[UIView alloc] initWithFrame:CGRectMake(0, contentViewHeight-65, 320, 25)];
+    [self.view addSubview:toolView];
+    
+    textCount = [[UILabel alloc] initWithFrame:CGRectMake(270, 0, 50, 20)];
     textCount.text = @"140";
     textCount.backgroundColor = [UIColor clearColor];
     textCount.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0];
-    [self.view addSubview:textCount];
+    [toolView addSubview:textCount];
     
     UIButton *camera = [UIButton buttonWithType:UIButtonTypeCustom];
-    camera.frame = CGRectMake(30, contentViewHeight-40, 30, 20);
-    [self.view addSubview:camera];
+    camera.frame = CGRectMake(30, 0, 25, 21);
+    [camera setBackgroundImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
+    [camera addTarget:self action:@selector(showActionSheet) forControlEvents:UIControlEventTouchUpInside];
+    [toolView addSubview:camera];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardWasShown:)
+//                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    toolView.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height-60-kbSize.height, 320, 25);
     
 }
 
@@ -76,9 +96,16 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
 {
     if ([weiboContentView.text length]> 0 && [weiboContentView.text length]<=140) {
         [sendButton setEnabled:YES];
+        textCount.textColor = [UIColor blackColor];
+        textCount.frame = CGRectMake(270, 0, 50, 20);
         textAmount = [weiboContentView.text length];
         textCount.text = [NSString stringWithFormat:@"%d",140 - textAmount];
     }else{
+        if ([weiboContentView.text length]>140) {
+            textCount.frame = CGRectMake(200, 0, 150, 20);
+            textCount.textColor = [UIColor redColor];
+            textCount.text = [NSString stringWithFormat:@"已超出%d个字",[weiboContentView.text length]-140];
+        }
         [sendButton setEnabled:NO];
     }
 

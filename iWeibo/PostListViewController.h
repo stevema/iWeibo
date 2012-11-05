@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PullRefreshTableViewController.h"
 
-@interface PostListViewController : PullRefreshTableViewController
+@interface PostListViewController : PullRefreshTableViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate>
 
 
 @end

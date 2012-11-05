@@ -28,15 +28,36 @@
 
 -(id)initWithData:(NSDictionary *)data;
 
+
+//get user info
 -(void) getUserInfo:(NSMutableDictionary *) filters
           onComplete:(RequestCompleteBlock) completionHandler
              onError:(RequestErrorBlock) errorHandler;
 
+
+//get user and follow people's weibo
 -(void) listOpenWeibo:(NSMutableDictionary *) filters
          onComplete:(RequestCompleteBlock) completionHandler
             onError:(RequestErrorBlock) errorHandler;
 
+//send text weibo
 -(void) sendWeiboText:(NSMutableDictionary *) filters
            onComplete:(RequestCompleteBlock) completionHandler
               onError:(RequestErrorBlock) errorHandler;
+
+//delete one weibo
+-(void) deleteWeiboText:(NSMutableDictionary *) filters
+           onComplete:(RequestCompleteBlock) completionHandler
+              onError:(RequestErrorBlock) errorHandler;
+
+//get user fans list
+-(void) getUserFans:(NSMutableDictionary *) filters
+             onComplete:(RequestCompleteBlock) completionHandler
+                onError:(RequestErrorBlock) errorHandler;
+
+//get user follows list
+-(void) getUserFollows:(NSMutableDictionary *) filters
+         onComplete:(RequestCompleteBlock) completionHandler
+            onError:(RequestErrorBlock) errorHandler;
+
 @end
