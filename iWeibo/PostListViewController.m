@@ -10,6 +10,7 @@
 #import "User.h"
 #import "UIFeedListCell.h"
 #import "AddWeiboViewController.h"
+#import "WeiboViewController.h"
 
 
 @interface PostListViewController ()
@@ -262,6 +263,11 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
         } onError:^(NSString *msg){
             
         }];
+    }else {
+        WeiboViewController *weiboViewController = [[WeiboViewController alloc] initWithNibName:nil bundle:nil];
+        Feed *feed = [user.feeds objectAtIndex:indexPath.row];
+        weiboViewController.feed = feed;
+        [self.navigationController pushViewController:weiboViewController animated:YES];
     }
 }
 
