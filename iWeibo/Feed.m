@@ -20,6 +20,8 @@
 @synthesize thumbnail_pic = _thumbnail_pic;
 @synthesize bmiddle_pic = _bmiddle_pic;
 @synthesize original_pic = _original_pic;
+@synthesize comments = _comments;
+
 
 -(id)initWithData:(NSDictionary *)data
 {
@@ -47,4 +49,12 @@
     }
     return self;
 }
+
+-(void) listComments:(NSMutableDictionary *) filters
+          onComplete:(RequestCompleteBlock) completionHandler
+             onError:(RequestErrorBlock) errorHandler;
+{
+    
+}
+
 @end

@@ -72,6 +72,7 @@
 		AA40DF2B1625C97600C1F3AA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA40DF2A1625C97600C1F3AA /* Default@2x.png */; };
 		AA40DF2D1625C98300C1F3AA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA40DF2C1625C98300C1F3AA /* Default.png */; };
 		AA4D9B53164808CE00C5E020 /* report@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4D9B52164808CE00C5E020 /* report@2x.png */; };
+		AA4D9B5616480D5D00C5E020 /* UICommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4D9B5516480D5D00C5E020 /* UICommentCell.m */; };
 		AA4F5F971643CFF200418729 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4F5F961643CFF200418729 /* Feed.m */; };
 		AA7036F6164393160093F57C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7036F5164393160093F57C /* User.m */; };
 		AA70370E164393D70093F57C /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7036FB164393D70093F57C /* NSAlert+MKNetworkKitAdditions.m */; };
@@ -192,6 +193,8 @@
 		AA40DF2A1625C97600C1F3AA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		AA40DF2C1625C98300C1F3AA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		AA4D9B52164808CE00C5E020 /* report@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "report@2x.png"; sourceTree = "<group>"; };
+		AA4D9B5416480D5D00C5E020 /* UICommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommentCell.h; sourceTree = "<group>"; };
+		AA4D9B5516480D5D00C5E020 /* UICommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICommentCell.m; sourceTree = "<group>"; };
 		AA4F5F951643CFF200418729 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
 		AA4F5F961643CFF200418729 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
 		AA7036F4164393160093F57C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -389,6 +392,8 @@
 				AA0399B81646B8FC00CCAAD2 /* UISummaryPhotoView.m */,
 				AA03998416442B8E00CCAAD2 /* UIFeedListCell.h */,
 				AA03998516442B8E00CCAAD2 /* UIFeedListCell.m */,
+				AA4D9B5416480D5D00C5E020 /* UICommentCell.h */,
+				AA4D9B5516480D5D00C5E020 /* UICommentCell.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -737,6 +742,7 @@
 				AA039A051647BCEE00CCAAD2 /* WeiboViewController.m in Sources */,
 				AA039A081647FDDD00CCAAD2 /* Comment.m in Sources */,
 				AA039A1C1648032400CCAAD2 /* UIHRuler.m in Sources */,
+				AA4D9B5616480D5D00C5E020 /* UICommentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

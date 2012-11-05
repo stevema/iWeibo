@@ -22,6 +22,11 @@
 @property(nonatomic,strong)NSString *bmiddle_pic;
 @property(nonatomic,strong)NSString *original_pic;
 @property(nonatomic)BOOL isRetweet;
+@property(nonatomic,strong)NSMutableArray *comments;
 
 -(id)initWithData:(NSDictionary *)data;
+
+-(void) listComments:(NSMutableDictionary *) filters
+           onComplete:(RequestCompleteBlock) completionHandler
+              onError:(RequestErrorBlock) errorHandler;
 @end

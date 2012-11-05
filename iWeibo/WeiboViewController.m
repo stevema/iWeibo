@@ -9,6 +9,7 @@
 #import "WeiboViewController.h"
 #import "Photo.h"
 #import "UIHRuler.h"
+#import "UICommentCell.h"
 
 @interface WeiboViewController ()
 
@@ -106,6 +107,29 @@
     
 }
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Comment Cell";
+    UICommentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (!cell) {
+        cell = [[UICommentCell alloc] init];
+        
+        
+    }
+    
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
 
 -(void)back
 {

@@ -7,7 +7,12 @@
 //
 
 #import "BaseModel.h"
+#import "User.h"
 
 @interface Comment : BaseModel
 
+@property(nonatomic,strong)NSString *created_at;
+@property(nonatomic,strong)NSString *comment_id;
+@property(nonatomic,strong)NSString *text;
+@property(nonatomic,strong)User *user;
 @end

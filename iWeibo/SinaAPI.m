@@ -114,6 +114,36 @@
     return [self sendOperation:op];
 }
 
+-(MKNetworkOperation *)listWeiboComments:(NSMutableDictionary *)filters
+                              onComplete:(RequestCompleteBlock) completionHandler
+                                 onError:(RequestErrorBlock) errorHandler
+                                     ssl:(BOOL)ssl;
+{
+    NSString *url = [[NSString alloc] initWithFormat:@"comments/show.json"];
+    
+    MKNetworkOperation *op = [self operationWithPath:url
+                                              params:filters
+                                          httpMethod:@"GET"
+                                                 ssl:ssl];
+    [op onCompletion:^(MKNetworkOperation *completedOperation) {
+        
+        NSDictionary *data = [self parseResponseWithOperation:completedOperation];
+        
+        if (data!=nil)
+        {
+            completionHandler(data);
+        }
+        
+        
+    } onError:^(NSError *error) {
+        
+        errorHandler(@"Request Error");
+        
+    }];
+    
+    return [self sendOperation:op];
+}
+
 -(MKNetworkOperation *)sendWeiboText:(NSMutableDictionary *)filters
                           onComplete:(RequestCompleteBlock) completionHandler
                              onError:(RequestErrorBlock) errorHandler

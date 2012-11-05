@@ -33,6 +33,11 @@ typedef void (^RequestErrorBlock)(NSString *msg);
                              onError:(RequestErrorBlock) errorHandler
                             ssl:(BOOL)ssl;
 
+-(MKNetworkOperation *)listWeiboComments:(NSMutableDictionary *)filters
+                          onComplete:(RequestCompleteBlock) completionHandler
+                             onError:(RequestErrorBlock) errorHandler
+                                 ssl:(BOOL)ssl;
+
 -(MKNetworkOperation*) downloadFileFrom:(NSString *)url
                                  saveTo:(NSString *)path
                              onComplete:(RequestCompleteBlock) completionHandler
