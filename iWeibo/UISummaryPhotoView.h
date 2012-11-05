@@ -11,7 +11,9 @@
 #import "DDProgressView.h"
 
 @interface UISummaryPhotoView : UIView
-
+{
+    UIScrollView *mainScrollView;
+}
 
 @property(nonatomic,strong)Photo *photo;
 @property(nonatomic,strong)UIImageView *photoView;
@@ -22,6 +24,6 @@
 
 
 
--(id)initWithFrame:(CGRect)frame withPhoto:(Photo*)photo;
+-(id)initWithFrame:(CGRect)frame withPhoto:(Photo*)photo onScrolView:(UIScrollView *)scrollView;
 
 @end

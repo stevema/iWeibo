@@ -52,17 +52,19 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarView];
     UIButton *addPhotoButton = [UIButton buttonWithType:UIButtonTypeCustom];
     addPhotoButton.frame = CGRectMake(20, 2, 22, 17);
-    [addPhotoButton addTarget:self action:@selector(addWeibo) forControlEvents:UIControlEventTouchUpInside];
+    [addPhotoButton addTarget:self action:@selector(addPhoto) forControlEvents:UIControlEventTouchUpInside];
     [addPhotoButton setBackgroundImage:[UIImage imageNamed:@"add_photo"] forState:UIControlStateNormal];
     //[addPhotoButton setBackgroundImage:[UIImage imageNamed:@"add_photo"] forState:UIControlStateHighlighted];
     [rightBarView addSubview:addPhotoButton];
     
     self.view.backgroundColor = [UIColor colorWithRed:0xF2/255.0 green:0xF2/255.0 blue:0xF2/255.0 alpha:0xFF/255.0];
     delegate = [AppDelegate sharedAppDelegate];
-    self.title = delegate.user.screen_name;
+    self.navigationController.navigationBar.topItem.title = delegate.user.screen_name;
     user = delegate.user;
    // self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self getNews];
+    
+    
 }
 
 -(void)getNews

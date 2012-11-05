@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIPlaceHolderTextView.h"
 
-@interface AddWeiboViewController : UIViewController
+@interface AddWeiboViewController : UIViewController<UITextViewDelegate,UIActionSheetDelegate>
 {
-    UITextField *weiboContentView;
+    UIPlaceHolderTextView *weiboContentView;
+    UILabel *textCount;
+    int textAmount;
+    AppDelegate *delegate;
+    UIButton *sendButton;
 }
 @end

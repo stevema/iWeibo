@@ -38,4 +38,9 @@ typedef void (^RequestErrorBlock)(NSString *msg);
                              onComplete:(RequestCompleteBlock) completionHandler
                                 onError:(RequestErrorBlock) errorHandler;
 
+-(MKNetworkOperation *)sendWeiboText:(NSMutableDictionary *)filters
+                          onComplete:(RequestCompleteBlock) completionHandler
+                             onError:(RequestErrorBlock) errorHandler
+                                 ssl:(BOOL)ssl;
+
 @end

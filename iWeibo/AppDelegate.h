@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PostListViewController.h"
 #import "NotificationViewController.h"
+#import "AppViewController.h"
 #import "FriendsViewController.h"
 #import "MoreViewController.h"
 #import "SinaWeibo.h"
@@ -22,11 +23,13 @@
 
 @property (strong, nonatomic) UINavigationController *postListNavController;
 @property (strong, nonatomic) UINavigationController *notificationNavController;
+@property (strong, nonatomic) UINavigationController *appNavController;
 @property (strong, nonatomic) UINavigationController *friendsNavController;
 @property (strong, nonatomic) UINavigationController *moreNavController;
 
 @property (strong, nonatomic) PostListViewController *postListViewController;
 @property (strong, nonatomic) NotificationViewController *notificationViewController;
+@property (strong, nonatomic) AppViewController *appViewController;
 @property (strong, nonatomic) FriendsViewController *friendsViewController;
 @property (strong, nonatomic) MoreViewController *moreViewController;
 

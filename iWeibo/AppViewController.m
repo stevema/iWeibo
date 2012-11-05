@@ -1,18 +1,18 @@
 //
-//  FriendsViewController.m
+//  AppViewController.m
 //  iWeibo
 //
-//  Created by Steve on 10/10/12.
+//  Created by Steve on 11/5/12.
 //  Copyright (c) 2012 Steve. All rights reserved.
 //
 
-#import "FriendsViewController.h"
+#import "AppViewController.h"
 
-@interface FriendsViewController ()
+@interface AppViewController ()
 
 @end
 
-@implementation FriendsViewController
+@implementation AppViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,10 +27,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.topItem.title = @"好友";
+	// Do any additional setup after loading the view.
+    self.navigationController.navigationBar.topItem.title = @"应用";
     [self.view setBackgroundColor:[UIColor colorWithRed:0xF2/255.0 green:0xF2/255.0 blue:0xF2/255.0 alpha:0xFF/255.0]];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topBar_bg"] forBarMetrics:UIBarMetricsDefault];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

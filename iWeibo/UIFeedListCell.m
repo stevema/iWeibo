@@ -5,12 +5,14 @@
 //  Created by Steve on 11/3/12.
 //  Copyright (c) 2012 Steve. All rights reserved.
 //
-
+#import <QuartzCore/QuartzCore.h>
 #import "UIFeedListCell.h"
 #import "Photo.h"
 #import "UISummaryPhotoView.h"
 
 @implementation UIFeedListCell
+
+static const NSTimeInterval kAnimationDuration = 0.40f;
 
 @synthesize avatarView = _avatarView;
 @synthesize nameLabel = _nameLabel;
@@ -62,7 +64,14 @@
     photo.url = currentFeed.original_pic;
     showImageView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0,320 , [[UIScreen mainScreen] bounds].size.height)];
     showImageView.backgroundColor = [UIColor blackColor];
-    UISummaryPhotoView *summaryImageView = [[UISummaryPhotoView alloc] initWithFrame:CGRectMake(0, 0,320 , [[UIScreen mainScreen] bounds].size.height) withPhoto:photo];
+    UISummaryPhotoView *summaryImageView = [[UISummaryPhotoView alloc] initWithFrame:CGRectMake(0, 0,320 , [[UIScreen mainScreen] bounds].size.height) withPhoto:photo onScrolView:showImageView];
+    CATransition *transition = [CATransition animation];
+    transition.duration = kAnimationDuration;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    transition.type = kCATransitionFade;
+    transition.subtype = kCATransitionFade;
+    transition.delegate = self;
+    [showImageView.layer addAnimation:transition forKey:nil];
     [showImageView addSubview:summaryImageView];
     [delegate.window addSubview:showImageView];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeSummaryView)];

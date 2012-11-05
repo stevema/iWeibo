@@ -36,4 +36,7 @@
          onComplete:(RequestCompleteBlock) completionHandler
             onError:(RequestErrorBlock) errorHandler;
 
+-(void) sendWeiboText:(NSMutableDictionary *) filters
+           onComplete:(RequestCompleteBlock) completionHandler
+              onError:(RequestErrorBlock) errorHandler;
 @end

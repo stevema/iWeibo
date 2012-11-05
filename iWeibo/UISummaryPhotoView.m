@@ -16,11 +16,11 @@
 @synthesize reloadButton = _reloadButton;
 @synthesize photo = _photo;
 
--(id)initWithFrame:(CGRect)frame withPhoto:(Photo*)photo
+-(id)initWithFrame:(CGRect)frame withPhoto:(Photo*)photo onScrolView:(UIScrollView *)scrollView;
 
 {
     self = [self initWithFrame:frame];
-    
+    mainScrollView = scrollView;
     _photo = photo;
     _photoView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
     _photoView.contentMode = UIViewContentModeScaleAspectFill;
@@ -57,10 +57,13 @@
         _photoView.image = _photo.image;
         CGFloat height = _photo.image.size.height;
         CGFloat width = _photo.image.size.width;
-        CGFloat vs = width / height;
-        self.frame = CGRectMake(0, 0, 320, height*vs);
+        //CGFloat vs = width / height;
+        self.frame = CGRectMake(0, -20, width, height);
+        height = height < [[UIScreen mainScreen] bounds].size.height?[[UIScreen mainScreen] bounds].size.height:height;
+        mainScrollView.frame = CGRectMake(0, 0, width, height);
+        mainScrollView.scrollEnabled = YES;
         _photoView.clipsToBounds = YES;
-        [self addSubview:_photoView];
+        [mainScrollView addSubview:_photoView];
     }
 onDownloadProgressChanged:^(double progress)
      {

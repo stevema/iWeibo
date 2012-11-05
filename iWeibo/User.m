@@ -94,4 +94,15 @@
         errorHandler(msg);
     } ssl:YES];
 }
+
+-(void) sendWeiboText:(NSMutableDictionary *) filters
+           onComplete:(RequestCompleteBlock) completionHandler
+              onError:(RequestErrorBlock) errorHandler;
+{
+    [[self api] sendWeiboText:filters onComplete:^(NSDictionary *data){
+        completionHandler(data);
+    } onError:^(NSString *msg){
+        errorHandler(msg);
+    } ssl:YES];
+}
 @end

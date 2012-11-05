@@ -114,6 +114,36 @@
     return [self sendOperation:op];
 }
 
+-(MKNetworkOperation *)sendWeiboText:(NSMutableDictionary *)filters
+                          onComplete:(RequestCompleteBlock) completionHandler
+                             onError:(RequestErrorBlock) errorHandler
+                                 ssl:(BOOL)ssl;
+{
+    NSString *url = [[NSString alloc] initWithFormat:@"statuses/update.json"];
+    NSLog(@"filters is :%@",filters);
+    MKNetworkOperation *op = [self operationWithPath:url
+                                              params:filters
+                                          httpMethod:@"POST"
+                                                 ssl:ssl];
+    [op onCompletion:^(MKNetworkOperation *completedOperation) {
+        
+        NSDictionary *data = [self parseResponseWithOperation:completedOperation];
+        
+        if (data!=nil)
+        {
+            completionHandler(data);
+        }
+        
+        
+    } onError:^(NSError *error) {
+        
+        errorHandler(@"Request Error");
+        
+    }];
+    
+    return [self sendOperation:op];
+}
+
 -(MKNetworkOperation*) downloadFileFrom:(NSString *)url
                                  saveTo:(NSString *)path
                              onComplete:(RequestCompleteBlock) completionHandler

@@ -13,11 +13,13 @@
 
 @synthesize postListNavController = _postListNavController;
 @synthesize notificationNavController = _notificationNavController;
+@synthesize appViewController = _appViewController;
 @synthesize friendsNavController = _friendsNavController;
 @synthesize moreNavController = _moreNavController;
 
 @synthesize postListViewController = _postListViewController;
 @synthesize notificationViewController = _notificationViewController;
+@synthesize appNavController = _appNavController;
 @synthesize friendsViewController = _friendsViewController;
 @synthesize moreViewController = _moreViewController;
 
@@ -122,19 +124,24 @@
         [_splashView removeFromSuperview];
         _postListViewController = [[PostListViewController alloc] initWithStyle:UITableViewStylePlain];
         _notificationViewController = [[NotificationViewController alloc] initWithStyle:UITableViewStylePlain];
+        _appViewController = [[AppViewController alloc] initWithNibName:nil bundle:nil];
         _friendsViewController = [[FriendsViewController alloc] initWithNibName:nil bundle:nil];
         _moreViewController = [[MoreViewController alloc] initWithNibName:nil bundle:nil];
         
         _postListNavController = [[UINavigationController alloc] initWithRootViewController:_postListViewController];
         _notificationNavController = [[UINavigationController alloc] initWithRootViewController:_notificationViewController];
+        _appNavController = [[UINavigationController alloc] initWithRootViewController:_appViewController];
         _friendsNavController = [[UINavigationController alloc] initWithRootViewController:_friendsViewController];
         _moreNavController = [[UINavigationController alloc] initWithRootViewController:_moreViewController];
         
-        NSArray *controllers = [[NSArray alloc] initWithObjects:_postListNavController,_notificationNavController,_friendsNavController,_moreNavController, nil];
+        NSArray *controllers = [[NSArray alloc] initWithObjects:_postListNavController,_notificationNavController,_appNavController,_friendsNavController,_moreNavController, nil];
         _tabBarController = [[UITabBarController alloc] init];
         [_tabBarController setViewControllers:controllers];
-        [_tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"topBar_bg"]];
+        [_tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tob-bg"]];
+        
         self.window.rootViewController = _tabBarController;
+        
+        
         
     } onError:^(NSString *msg){
         
