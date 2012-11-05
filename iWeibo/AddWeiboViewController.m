@@ -66,7 +66,9 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
     textCount.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0];
     [self.view addSubview:textCount];
     
-    UIButton *camra
+    UIButton *camera = [UIButton buttonWithType:UIButtonTypeCustom];
+    camera.frame = CGRectMake(30, contentViewHeight-40, 30, 20);
+    [self.view addSubview:camera];
     
 }
 

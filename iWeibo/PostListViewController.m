@@ -61,7 +61,7 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
     delegate = [AppDelegate sharedAppDelegate];
     self.navigationController.navigationBar.topItem.title = delegate.user.screen_name;
     user = delegate.user;
-   // self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self getNews];
     
     
@@ -152,7 +152,7 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
         if (feed.thumbnail_pic) {
             height = height + 70;
         }
-        return height;
+        return height+20;
     }
     
 }
