@@ -16,19 +16,19 @@
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     if (index == 0) {
-        CGFloat textHeight = [self cellHeight:feed.text width:288-10 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
-        UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 2, 288, textHeight)];
+        CGFloat height = 0.0;
+        CGFloat textHeight = [self cellHeight:feed.text width:296 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
+        UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 2, 305, textHeight)];
         textView.text = feed.text;
         textView.textColor = [UIColor colorWithRed:0.33f green:0.33f blue:0.33f alpha:1.00f];
-        // _textView.textColor = [UIColor whiteColor];
         textView.editable = NO;
         textView.scrollEnabled = NO;
         textView.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0];
-        textView.backgroundColor = [UIColor clearColor];
         textView.userInteractionEnabled = NO;
         textView.backgroundColor = [UIColor clearColor];
         [self addSubview:textView];
         
+        height = textHeight + 22;
         
         if (feed.thumbnail_pic) {
             // UIImageView *feedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(57, 22+textHeight+10, 200, 60)];
@@ -38,7 +38,15 @@
             feedImageView.userInteractionEnabled = YES;
             [feedImageView addGestureRecognizer:tap];
             [self addSubview:feedImageView];
+            height = height + 60;
         }
+        
+        UILabel *metaLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, height, 100, 13.0)];
+        metaLabel.text = [NSString stringWithFormat:@"转发:%d|评论:%d",feed.reports_count,feed.comments_count];
+        metaLabel.font = [UIFont systemFontOfSize:12.0];
+        metaLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:metaLabel];
+        
     }else {
         Comment *comment = [[Comment alloc] initWithData:[feed.comments objectAtIndex:index-1]];
         UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 6, 200, 18.0)];
@@ -47,8 +55,8 @@
         nameLabel.textColor = [UIColor colorWithRed:0.33f green:0.33f blue:0.33f alpha:1.00f];
         [self addSubview:nameLabel];
         
-        CGFloat textHeight = [self cellHeight:comment.text width:288-10 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
-        UITextView *commentView = [[UITextView alloc] initWithFrame:CGRectMake(10, 25, 288, textHeight)];
+        CGFloat textHeight = [self cellHeight:comment.text width:296 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
+        UITextView *commentView = [[UITextView alloc] initWithFrame:CGRectMake(10, 25, 305, textHeight)];
         commentView.text = comment.text;
         commentView.backgroundColor = [UIColor clearColor];
         commentView.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0];

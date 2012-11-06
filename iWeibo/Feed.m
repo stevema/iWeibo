@@ -14,6 +14,7 @@
 @synthesize created_at = _created_at;
 @synthesize text = _text;
 @synthesize comments_count = _comments_count;
+@synthesize reports_count = _reports_count;
 @synthesize feed_user = _feed_user;
 @synthesize retweeted_feed = _retweeted_feed;
 @synthesize isRetweet = _isRetweet;
@@ -31,6 +32,7 @@
         _created_at = [data valueForKey:@"created_at"];
         _text = [data valueForKey:@"text"];
         _comments_count = [[data valueForKey:@"comments_count"] integerValue];
+        _reports_count = [[data valueForKey:@"reports_count"] integerValue];
         _feed_user = [[User alloc] initWithData:[data valueForKey:@"user"]];
         NSLog(@"feed user is :%@",_feed_user.screen_name);
         //_feed_user = [[User alloc] initWithData:[[data valueForKey:@"retweeted_status"] valueForKey:@"user"]];

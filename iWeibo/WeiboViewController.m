@@ -128,7 +128,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return (_feed.comments_count+1);
+    return ([_feed.comments count]+1);
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -148,14 +148,14 @@
 {
     CGFloat height = 0.0;
     if (indexPath.row == 0) {
-        height = [self cellHeight:_feed.text width:288-10 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
+        height = [self cellHeight:_feed.text width:296 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
         if (_feed.thumbnail_pic) {
             height = height + 70;
         }
         return height + 40;
     }else {
         Comment *comment = [[Comment alloc] initWithData:[_feed.comments objectAtIndex:indexPath.row-1]];
-        height = 25 + [self cellHeight:comment.text width:288-10 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
+        height = 25 + [self cellHeight:comment.text width:296 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
         return height + 10;
     }
 }

@@ -40,8 +40,8 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
     _nameLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:_nameLabel];
     
-    CGFloat textHeight = [self cellHeight:feed.text width:250-10 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
-    _textView = [[UITextView alloc] initWithFrame:CGRectMake(57-5, 22, 250, textHeight)];
+    CGFloat textHeight = [self cellHeight:feed.text width:250 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
+    _textView = [[UITextView alloc] initWithFrame:CGRectMake(57-5, 22, 260, textHeight)];
     _textView.text = feed.text;
     _textView.textColor = [UIColor colorWithRed:0.33f green:0.33f blue:0.33f alpha:1.00f];
    // _textView.textColor = [UIColor whiteColor];

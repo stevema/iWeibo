@@ -16,6 +16,7 @@
 @property(nonatomic,strong)NSString *created_at;
 @property(nonatomic,strong)NSString *feed_id;
 @property(nonatomic)int comments_count;
+@property(nonatomic)int reports_count;
 @property(nonatomic,strong)User *feed_user;
 @property(nonatomic,strong)Feed *retweeted_feed;
 @property(nonatomic,strong)NSString *thumbnail_pic;

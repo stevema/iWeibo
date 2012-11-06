@@ -71,6 +71,7 @@
 		AA40DF291625C8CF00C1F3AA /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA40DF281625C8CF00C1F3AA /* logo@2x.png */; };
 		AA40DF2B1625C97600C1F3AA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA40DF2A1625C97600C1F3AA /* Default@2x.png */; };
 		AA40DF2D1625C98300C1F3AA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA40DF2C1625C98300C1F3AA /* Default.png */; };
+		AA498A0116494A57006D2590 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA498A0016494A57006D2590 /* CoreData.framework */; };
 		AA4D9B53164808CE00C5E020 /* report@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4D9B52164808CE00C5E020 /* report@2x.png */; };
 		AA4D9B5616480D5D00C5E020 /* UICommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4D9B5516480D5D00C5E020 /* UICommentCell.m */; };
 		AA4F5F971643CFF200418729 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4F5F961643CFF200418729 /* Feed.m */; };
@@ -192,6 +193,7 @@
 		AA40DF281625C8CF00C1F3AA /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo@2x.png"; path = "../logo@2x.png"; sourceTree = "<group>"; };
 		AA40DF2A1625C97600C1F3AA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		AA40DF2C1625C98300C1F3AA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		AA498A0016494A57006D2590 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		AA4D9B52164808CE00C5E020 /* report@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "report@2x.png"; sourceTree = "<group>"; };
 		AA4D9B5416480D5D00C5E020 /* UICommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommentCell.h; sourceTree = "<group>"; };
 		AA4D9B5516480D5D00C5E020 /* UICommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICommentCell.m; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA498A0116494A57006D2590 /* CoreData.framework in Frameworks */,
 				AA70374B164399110093F57C /* QuartzCore.framework in Frameworks */,
 				AA703749164399070093F57C /* SystemConfiguration.framework in Frameworks */,
 				AA703747164399000093F57C /* CFNetwork.framework in Frameworks */,
@@ -322,6 +325,7 @@
 		AA40DEEE1625BA0600C1F3AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA498A0016494A57006D2590 /* CoreData.framework */,
 				AA70374A164399110093F57C /* QuartzCore.framework */,
 				AA703748164399070093F57C /* SystemConfiguration.framework */,
 				AA703746164399000093F57C /* CFNetwork.framework */,

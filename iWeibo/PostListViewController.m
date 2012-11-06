@@ -177,7 +177,7 @@ static const NSTimeInterval kAnimationDuration = 0.40f;
     }else {
         CGFloat height = 24.0;
         Feed *feed = [user.feeds objectAtIndex:indexPath.row];
-        height = height + [self cellHeight:feed.text width:250-10 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
+        height = height + [self cellHeight:feed.text width:250 font:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0]];
         if (feed.thumbnail_pic) {
             height = height + 70;
         }
